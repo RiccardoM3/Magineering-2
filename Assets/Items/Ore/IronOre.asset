@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d9745f71bd04f40bc4da0ac149b645, type: 3}
+  m_Name: IronOre
+  m_EditorClassIdentifier: 
+  itemName: Iron Ore
+  stackAmount: 50
+  recipes:
+  - {fileID: 11400000, guid: 5a3d62a73b2c04643965c652b8a180fb, type: 2}
+  - {fileID: 11400000, guid: ed40c7e743e29e2489c10bdf1492efbf, type: 2}
+  icon: {fileID: 21300000, guid: efd4b80049374e54fbd756002516a357, type: 3}
+  aspects: []
+  insertsInto: 000000000200000003000000

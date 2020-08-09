@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee1cb3aad25ae442aaefb90ce029e99, type: 3}
+  m_Name: TinOreSmeltingRecipe
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: b122c7aba187e1f4099b692e16085f4e, type: 2}
+  amount: 1
+  recipeItems:
+  - item: {fileID: 11400000, guid: fa6f61eafc1a3d74dbe3d3257747527a, type: 2}
+    amount: 1
+  smeltingTime: 4

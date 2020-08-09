@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d9745f71bd04f40bc4da0ac149b645, type: 3}
+  m_Name: TinDust
+  m_EditorClassIdentifier: 
+  itemName: Tin Dust
+  stackAmount: 50
+  recipes:
+  - {fileID: 11400000, guid: c291a96e168ebdd468534a2321b51fe6, type: 2}
+  icon: {fileID: 21300000, guid: cce6184794eaa0b428a26f41b10ae847, type: 3}
+  aspects: []
+  insertsInto: 0000000002000000

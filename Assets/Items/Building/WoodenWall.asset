@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47c99e066371c4c9a363c2b7d21d09, type: 3}
+  m_Name: WoodenWall
+  m_EditorClassIdentifier: 
+  itemName: Wooden Wall
+  stackAmount: 50
+  recipes: []
+  icon: {fileID: 21300000, guid: 11fda6ebaf033b34fb34f9e3e83263cd, type: 3}
+  aspects: []
+  insertsInto: 00000000
+  preview: {fileID: 5808384532361710690, guid: e8f8408535ff519419ae35f8267ad74e, type: 3}
