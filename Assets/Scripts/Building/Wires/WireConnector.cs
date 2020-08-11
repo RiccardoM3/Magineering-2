@@ -45,6 +45,7 @@ public class WireConnector : MonoBehaviour
         newNode.AddConnection(secondWireNode);
         CreateWireConnector(firstWireNode.GetComponent<WireNode>(), newNode);
         CreateWireConnector(newNode, secondWireNode.GetComponent<WireNode>());
+        firstWireNode.attachedWireSystem.AddWireNode(newNode);
         Destroy(this.gameObject);
     }
 }

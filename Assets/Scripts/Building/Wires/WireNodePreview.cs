@@ -11,16 +11,10 @@ public class WireNodePreview : MonoBehaviour
     public WireConnector subdividingConnector;
 
     private Vector3 spawnPos;
-    //private float maxPlacementRange = 10f;
-    //private BuildMode buildMode;
     private bool paused = false;
     private float raycastRange = 8f;
     private float changeDistanceSpeed = 5f;
 
-    /*private enum BuildMode {
-        FreePlace,
-        FixedPlace
-    }*/
 
     // Start is called before the first frame update
     void Start() {
@@ -43,23 +37,14 @@ public class WireNodePreview : MonoBehaviour
     }
 
     private void HandleInput() {
-        /*if (Input.GetKeyDown(KeyCode.R)) {
-            if (buildMode == BuildMode.FreePlace) {
-                buildMode = BuildMode.FixedPlace;
-            } else if (buildMode == BuildMode.FixedPlace) {
-                buildMode = BuildMode.FreePlace;
-            }
-        }*/
-
-        //if (buildMode == BuildMode.FixedPlace) {
-            if (Input.GetKey(KeyCode.E)) {
-                raycastRange += Time.deltaTime * changeDistanceSpeed;
-            }
-            if (Input.GetKey(KeyCode.Q)) {
-                raycastRange -= Time.deltaTime * changeDistanceSpeed;
-            }
-            raycastRange = Mathf.Clamp(raycastRange, 0.75f, 8);
-        //}
+        
+        if (Input.GetKey(KeyCode.E)) {
+            raycastRange += Time.deltaTime * changeDistanceSpeed;
+        }
+        if (Input.GetKey(KeyCode.Q)) {
+            raycastRange -= Time.deltaTime * changeDistanceSpeed;
+        }
+        raycastRange = Mathf.Clamp(raycastRange, 0.75f, 8);
     }
 
     public float GetRaycastRange() {
@@ -85,12 +70,6 @@ public class WireNodePreview : MonoBehaviour
         }
     }
 
-    //Returns the distance to fire a raycast such that the horizontal distance will equal maxPlacementRange
-    /*public float CalcRaycastDistance() {
-        float cameraInclineAngle = Camera.main.transform.rotation.eulerAngles.x * Mathf.PI / 180;
-        return maxPlacementRange / Mathf.Cos(cameraInclineAngle);
-    }*/
-
     private void GetPosition() {
 
         RaycastHit hit;
@@ -98,71 +77,38 @@ public class WireNodePreview : MonoBehaviour
         int buildLayerMask = 1 << LayerMask.NameToLayer("Build");
         int terrainlayerMask = 1 << LayerMask.NameToLayer("Terrain");
         
-        /*if (buildMode == BuildMode.FreePlace) {
-            float raycastRange = CalcRaycastDistance();
-            if (Physics.Raycast(ray, out hit, raycastRange, terrainlayerMask | buildLayerMask)) {
-                if (hit.transform.tag == "WireNode") {
-                    spawnPos = hit.transform.position;
-                    isSnapped = true;
-                    snappedNode = hit.transform.gameObject;
-                    isSubdividing = false;
-                    subdividingConnector = null;
-                }
-                else if (hit.transform.tag == "Wire") {
-                    spawnPos = hit.point - hit.normal * hit.transform.localScale.x / 2;
-                    isSnapped = false;
-                    snappedNode = null;
-                    isSubdividing = true;
-                    subdividingConnector = hit.transform.GetComponent<WireConnector>();
-                }
-                else {
-                    spawnPos = hit.point;
-                    isSnapped = false;
-                    snappedNode = null;
-                    isSubdividing = false;
-                    subdividingConnector = null;
-                }
-            } else {
-                spawnPos = Camera.main.transform.position + ray.direction * raycastRange;
-                isSnapped = false;
-                snappedNode = null;
-                isSubdividing = false;
-                subdividingConnector = null;
-            }
-        } else if (buildMode == BuildMode.FixedPlace) {*/
-            if (Physics.Raycast(ray, out hit, raycastRange, terrainlayerMask | buildLayerMask)) {
+        if (Physics.Raycast(ray, out hit, raycastRange, terrainlayerMask | buildLayerMask)) {
 
-                //if raycast hit something,
-                if (hit.transform.tag == "WireNode") {
-                    spawnPos = hit.transform.position;
-                    isSnapped = true;
-                    snappedNode = hit.transform.gameObject;
-                    isSubdividing = false;
-                    subdividingConnector = null;
-                }
-                else if (hit.transform.tag == "Wire") {
-                    spawnPos = hit.point - hit.normal * hit.transform.localScale.x / 2;
-                    isSnapped = false;
-                    snappedNode = null;
-                    isSubdividing = true;
-                    subdividingConnector = hit.transform.GetComponent<WireConnector>();
-                }
-                else {
-                    spawnPos = hit.point;
-                    isSnapped = false;
-                    snappedNode = null;
-                    isSubdividing = false;
-                    subdividingConnector = null;
-                }
-            } else {
-                //raycast didn't hit
-                spawnPos = Camera.main.transform.position + ray.direction * raycastRange;
+            //if raycast hit something,
+            if (hit.transform.tag == "WireNode") {
+                spawnPos = hit.transform.position;
+                isSnapped = true;
+                snappedNode = hit.transform.gameObject;
+                isSubdividing = false;
+                subdividingConnector = null;
+            }
+            else if (hit.transform.tag == "Wire") {
+                spawnPos = hit.point - hit.normal * hit.transform.localScale.x / 2;
+                isSnapped = false;
+                snappedNode = null;
+                isSubdividing = true;
+                subdividingConnector = hit.transform.GetComponent<WireConnector>();
+            }
+            else {
+                spawnPos = hit.point;
                 isSnapped = false;
                 snappedNode = null;
                 isSubdividing = false;
                 subdividingConnector = null;
             }
-        //}
+        } else {
+            //raycast didn't hit
+            spawnPos = Camera.main.transform.position + ray.direction * raycastRange;
+            isSnapped = false;
+            snappedNode = null;
+            isSubdividing = false;
+            subdividingConnector = null;
+        }
 
         gameObject.transform.position = spawnPos;
     }
