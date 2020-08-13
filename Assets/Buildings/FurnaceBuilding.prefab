@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1792849697692661685}
-  - component: {fileID: 1236108060689264958}
   - component: {fileID: 8484268380392242080}
+  - component: {fileID: -5240150638901868700}
   m_Layer: 10
   m_Name: FurnaceBuilding
   m_TagString: Untagged
@@ -34,20 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1236108060689264958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168991270270856278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a882ba12595f9a44d80c38e296c295fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnaceInterfacePrefab: {fileID: 3772203522902238711, guid: c49a94c48b076fd4b86fa6db0a88efce,
-    type: 3}
 --- !u!54 &8484268380392242080
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64,6 +50,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5240150638901868700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168991270270856278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643ee4cfb43a0054abd6d2d82e5f3b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 3772203522902238711, guid: c49a94c48b076fd4b86fa6db0a88efce,
+    type: 3}
+  fuelUI: {fileID: 0}
 --- !u!1 &4117762221028122983
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +120,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -211,6 +213,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

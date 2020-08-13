@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FurnaceController : MonoBehaviour {
-    
+public class ManualMachine : MonoBehaviour {
 
-    
-
-    
 }
