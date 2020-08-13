@@ -7,9 +7,8 @@ public class WireNode : MonoBehaviour
     public NodeType nodeType = NodeType.Connector;
     public List<WireNode> connectedNodes = new List<WireNode>();
     public WireSystem attachedWireSystem;
-
-    private float powerContribution = 0;
-    private float contributionPerFrame = 0;
+    public float powerContribution = 0;
+    public float receivedPower = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +33,7 @@ public class WireNode : MonoBehaviour
 }
 
 public enum NodeType {
-    Input,
+    Generator,
     Connector,
-    Output
+    Consumer
 }

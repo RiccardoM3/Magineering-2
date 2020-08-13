@@ -13,6 +13,7 @@ public class CoalGeneratorController : MonoBehaviour, IInteractable {
     private FuelItem fuelItem;
     private FuelItem currentFuelItem;
     private float remainingBurnTime;
+    private float powerPerSecond = 100f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,12 +41,14 @@ public class CoalGeneratorController : MonoBehaviour, IInteractable {
             if (generatorUI != null) {
                 generatorUI.ShowInactive();
             }
+            outputNode.GetComponent<WireNode>().powerContribution = 0;
         }
         else {
             remainingBurnTime -= Time.deltaTime;
             if (generatorUI != null) {
                 generatorUI.ShowActive();
             }
+            outputNode.GetComponent<WireNode>().powerContribution = powerPerSecond * Time.deltaTime;
         }
 
         if (generatorUI != null && currentFuelItem != null) {

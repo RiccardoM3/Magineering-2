@@ -850,6 +850,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576ce49dbcc329244a9cc16680d862f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wireNodePreview: {fileID: 7969764716808891514, guid: c8c74b839ef2fb84ca5aa2c4bc58281a,
+    type: 3}
+  wireConnectorPrefab: {fileID: 5350000021030434882, guid: 836f7449b3f627845ab7f99735cf70bb,
+    type: 3}
+  wireConnectorPreviewPrefab: {fileID: 5131053720602593138, guid: ab1ccc09c01e2ab49b5df075039b0bb7,
+    type: 3}
 --- !u!1 &566937654
 GameObject:
   m_ObjectHideFlags: 0

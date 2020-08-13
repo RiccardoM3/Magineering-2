@@ -46,29 +46,38 @@ public class WireManager : MonoBehaviour
     void Update()
     {
         if (isPlacingWires) {
-            CheckValidity();
-            UpdateValidity();
-            if (Input.GetMouseButtonDown(0) && state == State.FirstNode) {
-                PauseFirstNodePreview();
-                secondWireNodePreview = Instantiate(wireNodePreview);
-                secondWireNodePreview.GetComponent<WireNodePreview>().SetRaycastRange(firstWireNodePreview.GetComponent<WireNodePreview>().GetRaycastRange());
-                wireConnectorPreview = Instantiate(wireConnectorPreviewPrefab);
-                wireConnectorPreview.GetComponent<WireConnectorPreview>().SetFirstNode(firstWireNodePreview);
-                wireConnectorPreview.GetComponent<WireConnectorPreview>().SetSecondNode(secondWireNodePreview);
-                state = State.SecondNode;
+            PlaceWires();
+        }
+
+        for (int i = 0; i < wireSystems.Count; i++) {
+            wireSystems[i].CollectPower();
+            wireSystems[i].PushPower();
+        }
+    }
+
+    private void PlaceWires() {
+        CheckValidity();
+        UpdateValidity();
+        if (Input.GetMouseButtonDown(0) && state == State.FirstNode) {
+            PauseFirstNodePreview();
+            secondWireNodePreview = Instantiate(wireNodePreview);
+            secondWireNodePreview.GetComponent<WireNodePreview>().SetRaycastRange(firstWireNodePreview.GetComponent<WireNodePreview>().GetRaycastRange());
+            wireConnectorPreview = Instantiate(wireConnectorPreviewPrefab);
+            wireConnectorPreview.GetComponent<WireConnectorPreview>().SetFirstNode(firstWireNodePreview);
+            wireConnectorPreview.GetComponent<WireConnectorPreview>().SetSecondNode(secondWireNodePreview);
+            state = State.SecondNode;
+        }
+        else if (state == State.SecondNode) {
+
+            if (Input.GetMouseButtonDown(0) && isValid) {
+                FinalisePlacement();
             }
-            else if (state == State.SecondNode) {
 
-                if (Input.GetMouseButtonDown(0) && isValid) {
-                    FinalisePlacement();
-                }
-
-                if (Input.GetMouseButtonDown(1)) {
-                    ResumeFirstNodePreview();
-                    Destroy(secondWireNodePreview);
-                    Destroy(wireConnectorPreview);
-                    state = State.FirstNode;
-                }
+            if (Input.GetMouseButtonDown(1)) {
+                ResumeFirstNodePreview();
+                Destroy(secondWireNodePreview);
+                Destroy(wireConnectorPreview);
+                state = State.FirstNode;
             }
         }
     }
