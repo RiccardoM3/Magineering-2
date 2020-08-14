@@ -9,7 +9,7 @@ public class Item : ScriptableObject
     public int stackAmount = 50;
     public List<Recipe> recipes = new List<Recipe>();
     public Sprite icon = null;
-    public List<Aspect> aspects = new List<Aspect>();
+    //public List<Aspect> aspects = new List<Aspect>();         For future
     public List<SlotType> insertsInto = new List<SlotType>();
 
     public Recipe GetRecipe<RecipeType>() {

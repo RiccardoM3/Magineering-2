@@ -45,7 +45,7 @@ public class WireSystem
         //loop through each consumer node and give it power
         while (consumerNodes.Count > 0) {
             float maxSupplyPower = collectedPower / consumerNodes.Count;
-            float requiredPower = consumerNodes[0].powerContribution;
+            float requiredPower = consumerNodes[0].powerContribution / Time.deltaTime;
 
             if (requiredPower <= maxSupplyPower) {
                 consumerNodes[0].receivedPower = requiredPower;
