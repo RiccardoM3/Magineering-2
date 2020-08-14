@@ -30,7 +30,7 @@ public class WireSystem
     }
 
     public void PushPower() {
-        Debug.Log("Pushing " + collectedPower);
+        //Debug.Log("Pushing " + collectedPower);
 
         //Find all nodes which are comsuming power and sort them by required power in ascending order
         List<WireNode> consumerNodes = new List<WireNode>();

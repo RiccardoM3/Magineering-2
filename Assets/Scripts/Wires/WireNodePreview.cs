@@ -88,7 +88,7 @@ public class WireNodePreview : MonoBehaviour
                 subdividingConnector = null;
             }
             else if (hit.transform.tag == "Wire") {
-                spawnPos = hit.point - hit.normal * hit.transform.localScale.x / 2;
+                spawnPos = hit.point - hit.normal * hit.transform.localScale.x / 2; //center of wire
                 isSnapped = false;
                 snappedNode = null;
                 isSubdividing = true;

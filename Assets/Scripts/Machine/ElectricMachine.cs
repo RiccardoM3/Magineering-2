@@ -14,11 +14,25 @@ public class ElectricMachine : MonoBehaviour {
 
     public virtual void Start() {
         wireNode = WireNodeConnection.GetComponent<WireNode>();
-        wireNode.powerContribution = -1 * requiredPowerPerSecond;
+        wireNode.powerContribution = requiredPowerPerSecond;
     }
 
     public virtual void LateUpdate() {
         GetPower();
+        Debug.Log("Required: " + requiredPowerPerSecond * Time.deltaTime);
+        Debug.Log("Received: " + receivedPower);
+
+        if (HasEnoughPower()) {
+            if (electricityUI != null) {
+                electricityUI.SetActive(true);
+            }
+        }
+        else {
+            if (electricityUI != null) {
+                electricityUI.SetActive(false);
+            }
+        }
+
     }
 
     //Get all electricity from any connected nodes
@@ -28,7 +42,7 @@ public class ElectricMachine : MonoBehaviour {
 
     //subtract from the power supply. this is per frame
     public void ConsumePower() {
-        receivedPower -= requiredPowerPerSecond / Time.deltaTime;
+        receivedPower -= requiredPowerPerSecond * Time.deltaTime;
     }
 
 
