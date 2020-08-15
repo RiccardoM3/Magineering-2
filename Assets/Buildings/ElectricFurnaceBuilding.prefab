@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPrefab: {fileID: 230099542484864865, guid: bafb086312f09ed45aeb09ffa372dc85, type: 3}
   WireNodeConnection: {fileID: 8035946644151632428}
-  requiredPowerPerSecond: 100
+  requiredPowerPerTick: 5
 --- !u!65 &6828979844543847662
 BoxCollider:
   m_ObjectHideFlags: 0

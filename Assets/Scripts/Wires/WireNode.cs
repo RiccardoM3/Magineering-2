@@ -7,8 +7,8 @@ public class WireNode : MonoBehaviour
     public NodeType nodeType = NodeType.Connector;
     public List<WireNode> connectedNodes = new List<WireNode>();
     public WireSystem attachedWireSystem;
-    public float powerContribution = 0;
-    public float receivedPower = 0;
+    public float powerContributionPerTick = 0;
+    public ElectricMachine attachedMachine;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,11 @@ public class WireNode : MonoBehaviour
         
     }
 
+    public void SendPowerToMachine(float amount) {
+        if (attachedMachine != null) {
+            attachedMachine.ReceivePower(amount);
+        }
+    }
 
     public void AddConnection(WireNode node) {
         this.connectedNodes.Add(node);

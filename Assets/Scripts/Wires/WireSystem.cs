@@ -24,13 +24,12 @@ public class WireSystem
         collectedPower = 0;
         for (int i = 0; i < wireNodes.Count; i++) {
             if (wireNodes[i].nodeType == NodeType.Generator) {
-                collectedPower += wireNodes[i].powerContribution;
+                collectedPower += wireNodes[i].powerContributionPerTick;
             }
         }
     }
 
     public void PushPower() {
-        //Debug.Log("Pushing " + collectedPower);
 
         //Find all nodes which are comsuming power and sort them by required power in ascending order
         List<WireNode> consumerNodes = new List<WireNode>();
@@ -40,18 +39,20 @@ public class WireSystem
             }
         }
 
-        consumerNodes.Sort((n1, n2) => n1.powerContribution.CompareTo(n2.powerContribution));
+        consumerNodes.Sort((n1, n2) => n1.powerContributionPerTick.CompareTo(n2.powerContributionPerTick));
 
         //loop through each consumer node and give it power
         while (consumerNodes.Count > 0) {
             float maxSupplyPower = collectedPower / consumerNodes.Count;
-            float requiredPower = consumerNodes[0].powerContribution / Time.deltaTime;
+            float requiredPower = consumerNodes[0].powerContributionPerTick;
 
             if (requiredPower <= maxSupplyPower) {
-                consumerNodes[0].receivedPower = requiredPower;
+                //consumerNodes[0].receivedPower = requiredPower;
+                consumerNodes[0].SendPowerToMachine(requiredPower);
                 collectedPower -= requiredPower;
             } else {
-                consumerNodes[0].receivedPower = maxSupplyPower;
+                //consumerNodes[0].receivedPower = maxSupplyPower;
+                consumerNodes[0].SendPowerToMachine(maxSupplyPower);
                 collectedPower -= maxSupplyPower;
             }
 

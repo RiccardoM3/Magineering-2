@@ -39,7 +39,13 @@ public class WireManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
+
+            for (int i = 0; i < wireSystems.Count; i++) {
+                wireSystems[i].CollectPower();
+                wireSystems[i].PushPower();
+            }
+        };
     }
 
     // Update is called once per frame
@@ -47,11 +53,6 @@ public class WireManager : MonoBehaviour
     {
         if (isPlacingWires) {
             PlaceWires();
-        }
-
-        for (int i = 0; i < wireSystems.Count; i++) {
-            wireSystems[i].CollectPower();
-            wireSystems[i].PushPower();
         }
     }
 

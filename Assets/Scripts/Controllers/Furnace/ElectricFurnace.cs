@@ -8,8 +8,8 @@ public class ElectricFurnace : ElectricMachine, IInteractable {
         base.Start();
     }
 
-    public override void LateUpdate() {
-        base.LateUpdate();
+    public override void Update() {
+        base.Update();
 
         if (machine.IsEnabled() && HasEnoughPower()) {
             furnace.DoUpdate();
