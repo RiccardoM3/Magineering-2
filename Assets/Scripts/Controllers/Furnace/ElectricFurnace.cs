@@ -10,10 +10,7 @@ public class ElectricFurnace : ElectricMachine, IInteractable {
 
     public override void Update() {
         base.Update();
-
-        if (machine.IsEnabled() && HasEnoughPower()) {
-            furnace.DoUpdate();
-        }
+        furnace.DoUpdate(machine.IsEnabled() && HasEnoughPower());
     }
 
     public void LeftClickInteract() {

@@ -6,12 +6,12 @@ public class Furnace {
 
     public Container smeltingContainer = new Container();
     public Container smeltedContainer = new Container();
-    public FurnaceUIController furnaceUI;
+    public ProgressBar progressBar;
 
     private Item smeltingItem;
     private Item currentSmeltingItem;
     private float progress;
-
+    private bool isRunning = false;
     public Furnace() {
 
         smeltingContainer.Init(1);
@@ -22,23 +22,22 @@ public class Furnace {
         progress = 0;
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
-            if (smeltingItem != null) {
+            if (smeltingItem != null && isRunning) {
                 SmeltingRecipe smeltingRecipe = smeltingItem.GetRecipe<SmeltingRecipe>() as SmeltingRecipe;
 
                 if (smeltingRecipe != null && (smeltingRecipe.item == smeltedContainer.savedSlots[0].item || smeltedContainer.savedSlots[0].item == null)) {
 
                     progress += 1;
 
-                    if (furnaceUI != null) {
-                        furnaceUI.UpdateProgressBar(progress / smeltingRecipe.smeltingTicks);
+                    if (progressBar != null) {
+                        progressBar.UpdateProgressBar(progress / smeltingRecipe.smeltingTicks);
                     }
 
-                    //100% complete
+                    //if 100% complete
                     if (Mathf.Approximately(progress / smeltingRecipe.smeltingTicks, 1f)) {
                         smeltedContainer.InsertItem(smeltingRecipe.item, smeltingRecipe.amount);
                         smeltingContainer.SubtractItem(smeltingRecipe.recipeItems[0].item, smeltingRecipe.recipeItems[0].amount);
-                        progress -= smeltingRecipe.smeltingTicks;
-                        furnaceUI.UpdateProgressBar(progress / smeltingRecipe.smeltingTicks);
+                        ResetProgress();
                     }
                 }
             }
@@ -51,11 +50,11 @@ public class Furnace {
         smeltedContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).Find("SmeltedItemSlotHolder").gameObject;
         smeltedContainer.Reinit();
 
-        furnaceUI = InventoryController.instance._interface.GetComponent<FurnaceUIController>();
+        progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();
         smeltingContainer.savedSlots[0].ItemUpdate += () => UpdateSmeltingItems();
 
         float progressPercent = smeltingItem != null ? progress / (smeltingItem.GetRecipe<SmeltingRecipe>() as SmeltingRecipe).smeltingTicks : 0;
-        furnaceUI.UpdateProgressBar(progressPercent);
+        progressBar.UpdateProgressBar(progressPercent);
     }
 
     public bool CanSmelt() {
@@ -64,8 +63,8 @@ public class Furnace {
 
     public void ResetProgress() {
         progress = 0;
-        if (furnaceUI != null) {
-            furnaceUI.UpdateProgressBar(0);
+        if (progressBar != null) {
+            progressBar.UpdateProgressBar(0);
         }
     }
 
@@ -77,10 +76,12 @@ public class Furnace {
         currentSmeltingItem = smeltingItem;
     }
 
-    public void DoUpdate() {
+    public void DoUpdate(bool shouldRun) {
 
         if (smeltingItem == null) {
             ResetProgress();
         }
+
+        this.isRunning = shouldRun;
     }
 }

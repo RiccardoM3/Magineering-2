@@ -17,9 +17,7 @@ public class FuelFurnace : FuelMachine, IInteractable {
             ConsumeFuel();
         }
 
-        if (machine.IsEnabled() && HasActiveFuel()) {
-            furnace.DoUpdate();
-        }
+        furnace.DoUpdate(machine.IsEnabled() && HasActiveFuel());
     }
 
     public void LeftClickInteract() {
