@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class CrusherUIController : MonoBehaviour
 {
-    public CrusherController linkedCrusher;
-
-    [SerializeField] private Image progressBar = default;
+    public Crusher linkedCrusher;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +19,7 @@ public class CrusherUIController : MonoBehaviour
         
     }
 
-    public void UpdateProgressBar(float percent) {
-        if (percent >= 1) {
-            percent = 1;
-        }
-        progressBar.transform.localScale = new Vector3(percent, 1, 1);
-    }
-
     public void Crush() {
-        linkedCrusher.Crush();
+        linkedCrusher.ManualCrush();
     }
 }

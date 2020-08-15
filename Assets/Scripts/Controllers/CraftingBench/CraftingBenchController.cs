@@ -2,28 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CraftingBenchController : MonoBehaviour, IInteractable {
-    public GameObject craftingBenchInterfacePrefab;
+public class CraftingBenchController : ManualMachine, IInteractable {
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-
-    }
-
-    public void OpenInterface()
-    {
-        InventoryController.instance.OpenInterface(craftingBenchInterfacePrefab);
-        InventoryController.instance.inventoryContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).GetChild(0).gameObject;
-        InventoryController.instance.inventoryContainer.Reinit(InventoryController.instance.inventoryContainer.savedSlots);
-        InventoryController.instance.hotbarContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).GetChild(1).gameObject;
-        InventoryController.instance.hotbarContainer.Reinit(InventoryController.instance.hotbarContainer.savedSlots);
+        base.Update();
     }
 
     public void LeftClickInteract() {
@@ -31,6 +21,6 @@ public class CraftingBenchController : MonoBehaviour, IInteractable {
     }
 
     public void RightClickInteract() {
-        OpenInterface();
+        ConnectToUI();
     }
 }

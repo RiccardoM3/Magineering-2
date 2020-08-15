@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8301887, g: 0.6278585, b: 0.17621933, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -513,6 +515,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -587,6 +590,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -666,6 +670,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.18605375, g: 0.19859244, b: 0.3490566, a: 0.98039216}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -690,6 +695,7 @@ GameObject:
   - component: {fileID: 9011374699219303535}
   - component: {fileID: 9011374699219303532}
   - component: {fileID: 5763684539498878258}
+  - component: {fileID: 5011238585635379057}
   m_Layer: 5
   m_Name: CrusherInventory
   m_TagString: Untagged
@@ -737,7 +743,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8334a804b0b6b4c95e8673758c8801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedCrusher: {fileID: 0}
+--- !u!114 &5011238585635379057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011374699219303534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b86d464c3f77a04db55cbb9df57bac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   progressBar: {fileID: 5286265537092080088}
 --- !u!1 &9011374699227859976
 GameObject:

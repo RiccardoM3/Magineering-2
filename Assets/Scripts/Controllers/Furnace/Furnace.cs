@@ -7,6 +7,7 @@ public class Furnace {
     public Container smeltingContainer = new Container();
     public Container smeltedContainer = new Container();
     public ProgressBar progressBar;
+    public int requiredSmeltTicks = 160;
 
     private Item smeltingItem;
     private Item currentSmeltingItem;
@@ -17,8 +18,6 @@ public class Furnace {
         smeltingContainer.Init(1);
         smeltedContainer.Init(1);
 
-        smeltingItem = smeltingContainer.savedSlots[0].item;
-        currentSmeltingItem = smeltingItem;
         progress = 0;
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
@@ -30,11 +29,11 @@ public class Furnace {
                     progress += 1;
 
                     if (progressBar != null) {
-                        progressBar.UpdateProgressBar(progress / smeltingRecipe.smeltingTicks);
+                        progressBar.UpdateProgressBar(progress / requiredSmeltTicks);
                     }
 
                     //if 100% complete
-                    if (Mathf.Approximately(progress / smeltingRecipe.smeltingTicks, 1f)) {
+                    if (Mathf.Approximately(progress / requiredSmeltTicks, 1f)) {
                         smeltedContainer.InsertItem(smeltingRecipe.item, smeltingRecipe.amount);
                         smeltingContainer.SubtractItem(smeltingRecipe.recipeItems[0].item, smeltingRecipe.recipeItems[0].amount);
                         ResetProgress();
@@ -53,7 +52,7 @@ public class Furnace {
         progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();
         smeltingContainer.savedSlots[0].ItemUpdate += () => UpdateSmeltingItems();
 
-        float progressPercent = smeltingItem != null ? progress / (smeltingItem.GetRecipe<SmeltingRecipe>() as SmeltingRecipe).smeltingTicks : 0;
+        float progressPercent = smeltingItem != null ? progress / requiredSmeltTicks : 0;
         progressBar.UpdateProgressBar(progressPercent);
     }
 

@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a210844c8ba89e24cac4c2896ef2cc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crusherInterfacePrefab: {fileID: 9011374699219303534, guid: f59df06e20c1c664b86cde717f75da8b,
+  UIPrefab: {fileID: 9011374699219303534, guid: f59df06e20c1c664b86cde717f75da8b,
     type: 3}
 --- !u!54 &5522363235314155449
 Rigidbody:
