@@ -10,20 +10,20 @@ public class FuelMachine : MonoBehaviour {
     private Container fuelContainer = new Container();
     private FuelItem fuelItem;
     private FuelItem currentFuelItem;
-    private float remainingBurnTime;
+    private float remainingBurnTicks;
 
     public bool NeedsFuel() {
-        return remainingBurnTime == 0 && fuelItem != null;
+        return remainingBurnTicks == 0 && fuelItem != null;
     }
 
     public void ConsumeFuel() {
         currentFuelItem = fuelItem;
-        remainingBurnTime += currentFuelItem.burnTime;
+        remainingBurnTicks += currentFuelItem.burnTicks;
         fuelContainer.SubtractItem(fuelItem, 1);
     }
 
     public bool HasActiveFuel() {
-        return remainingBurnTime > 0;
+        return remainingBurnTicks > 0;
     }
 
     public void UpdateFuelItems() {
@@ -35,29 +35,30 @@ public class FuelMachine : MonoBehaviour {
         fuelItem = fuelContainer.savedSlots[0].item as FuelItem;
         currentFuelItem = fuelItem;
 
-        remainingBurnTime = 0;
+        remainingBurnTicks = 0;
+
+        TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
+
+            if (remainingBurnTicks > 0) {
+                remainingBurnTicks -= 1;
+            }
+        };
     }
 
     public virtual void Update() {
 
-        if (remainingBurnTime < 0) {
-            remainingBurnTime = 0;
-        }
-
-        if (remainingBurnTime == 0) {
+        if (remainingBurnTicks == 0) {
             if (fuelUI != null) {
                 fuelUI.ShowInactive();
             }
-        }
-        else {
-            remainingBurnTime -= Time.deltaTime;
+        } else {
             if (fuelUI != null) {
                 fuelUI.ShowActive();
             }
         }
 
         if (fuelUI != null && currentFuelItem != null) {
-            fuelUI.UpdateBurnTimer(remainingBurnTime / currentFuelItem.burnTime);
+            fuelUI.UpdateBurnTimer(remainingBurnTicks / currentFuelItem.burnTicks);
         }
 
     }
@@ -70,7 +71,7 @@ public class FuelMachine : MonoBehaviour {
 
         fuelUI = InventoryController.instance._interface.GetComponent<FuelUIController>();
 
-        float burnPercent = currentFuelItem != null ? remainingBurnTime / currentFuelItem.burnTime : 0;
+        float burnPercent = currentFuelItem != null ? remainingBurnTicks / currentFuelItem.burnTicks : 0;
         fuelUI.UpdateBurnTimer(burnPercent);
     }
 }

@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Crafting/SmeltingRecipe")]
 public class SmeltingRecipe : Recipe
 {
-    public float smeltingTime;
+    public float smeltingTicks = 160;
 }

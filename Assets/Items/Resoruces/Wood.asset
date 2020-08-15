@@ -16,6 +16,5 @@ MonoBehaviour:
   stackAmount: 50
   recipes: []
   icon: {fileID: 21300000, guid: 72fc9e9cdc3b4544a80ca4af035b1e94, type: 3}
-  aspects: []
   insertsInto: 0000000004000000
-  burnTime: 2
+  burnTicks: 160

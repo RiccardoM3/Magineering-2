@@ -33,7 +33,7 @@ public class CoalGeneratorController : MonoBehaviour, IInteractable {
         }
         if (remainingBurnTime == 0 && fuelItem != null) {
             currentFuelItem = fuelItem;
-            remainingBurnTime += currentFuelItem.burnTime;
+            remainingBurnTime += currentFuelItem.burnTicks;
             fuelContainer.SubtractItem(fuelItem, 1);
         }
 
@@ -52,7 +52,7 @@ public class CoalGeneratorController : MonoBehaviour, IInteractable {
         }
 
         if (generatorUI != null && currentFuelItem != null) {
-            generatorUI.UpdateBurnTimer(remainingBurnTime / currentFuelItem.burnTime);
+            generatorUI.UpdateBurnTimer(remainingBurnTime / currentFuelItem.burnTicks);
         }
     }
 
@@ -77,7 +77,7 @@ public class CoalGeneratorController : MonoBehaviour, IInteractable {
 
         fuelContainer.savedSlots[0].ItemUpdate += () => UpdateItems();
 
-        float burnPercent = currentFuelItem != null ? remainingBurnTime / currentFuelItem.burnTime : 0;
+        float burnPercent = currentFuelItem != null ? remainingBurnTime / currentFuelItem.burnTicks : 0;
         generatorUI.UpdateBurnTimer(burnPercent);
     }
 

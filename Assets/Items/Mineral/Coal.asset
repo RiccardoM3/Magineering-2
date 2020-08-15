@@ -17,6 +17,5 @@ MonoBehaviour:
   recipes:
   - {fileID: 11400000, guid: 25b61647565cce248a1a8494429e4ac2, type: 2}
   icon: {fileID: 21300000, guid: 483bfc80dd5c1b44bb10ef7c3b50eb5f, type: 3}
-  aspects: []
   insertsInto: 000000000300000004000000
-  burnTime: 64
+  burnTicks: 1280

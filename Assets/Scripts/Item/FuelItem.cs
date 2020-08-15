@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Fuel Item", menuName = "Inventory/Fuel")]
 public class FuelItem : Item {
 
-    public float burnTime = 8;
+    public float burnTicks = 160;   //8 seconds
 }

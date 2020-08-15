@@ -35,7 +35,7 @@ public class TimeTicker : MonoBehaviour
     }
 
     /*void example() {
-        TimeTickManager.OnTick += delegate (object sender, TimeTickManager.OnTickEventArgs e) {
+        TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             Debug.Log("tick: " + e.tick);
         };
     }*/

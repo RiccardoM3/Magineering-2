@@ -17,4 +17,4 @@ MonoBehaviour:
   recipeItems:
   - item: {fileID: 11400000, guid: 4202ae9034141ed4aafcc347282d85c3, type: 2}
     amount: 1
-  smeltingTime: 8
+  smeltingTicks: 160
