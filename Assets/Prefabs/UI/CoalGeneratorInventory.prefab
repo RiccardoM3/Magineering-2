@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 728604330786997335}
   - component: {fileID: 728604330786997332}
-  - component: {fileID: 6357287338263463942}
+  - component: {fileID: 4564468477917552512}
   m_Layer: 5
   m_Name: CoalGeneratorInventory
   m_TagString: Untagged
@@ -46,7 +46,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728604330786997334}
   m_CullTransparentMesh: 0
---- !u!114 &6357287338263463942
+--- !u!114 &4564468477917552512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 728604330786997334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ec5bdb00d1ca3429b0dbf2b12a91f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0532e327ac663a546b3524525cbf5323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePrefab: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.18605375, g: 0.19859244, b: 0.3490566, a: 0.98039216}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -299,6 +300,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.36320752, b: 0.36320752, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -373,6 +375,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -446,6 +449,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
