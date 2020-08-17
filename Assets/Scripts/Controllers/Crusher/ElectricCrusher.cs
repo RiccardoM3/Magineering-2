@@ -2,31 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManualCrusher : ManualMachine, IInteractable {
-
+public class ElectricCrusher : ElectricMachine, IInteractable {
     public Crusher crusher = new Crusher();
 
-    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
+        crusher.DoUpdate(machine.IsEnabled() && HasEnoughPower());
     }
 
-    
-
     public void LeftClickInteract() {
-        
+
     }
 
     public void RightClickInteract() {
-        ConnectToUI();
+        base.ConnectToUI();
         crusher.ConnectToUI();
-        crusher.ConnectToManualUI();
     }
 }

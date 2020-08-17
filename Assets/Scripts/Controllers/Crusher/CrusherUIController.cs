@@ -20,6 +20,6 @@ public class CrusherUIController : MonoBehaviour
     }
 
     public void Crush() {
-        linkedCrusher.ManualCrush();
+        linkedCrusher.CrushTick();
     }
 }

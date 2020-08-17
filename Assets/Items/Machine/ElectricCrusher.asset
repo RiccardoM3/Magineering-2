@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47c99e066371c4c9a363c2b7d21d09, type: 3}
+  m_Name: ElectricCrusher
+  m_EditorClassIdentifier: 
+  itemName: Electric Crusher
+  stackAmount: 50
+  recipes:
+  - {fileID: 11400000, guid: 5048ab8af2394cc4c97b6e38ea4a6f09, type: 2}
+  icon: {fileID: 21300000, guid: ce5dd6a12f6bfde4aaaf13e7c051edaf, type: 3}
+  insertsInto: 00000000
+  preview: {fileID: 3192716107436732157, guid: 85a4295a41cecf9469473def5cf60704, type: 3}

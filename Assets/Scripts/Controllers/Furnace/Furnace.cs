@@ -11,14 +11,13 @@ public class Furnace {
 
     private Item smeltingItem;
     private Item currentSmeltingItem;
-    private float progress;
+    private float progress = 0;
     private bool isRunning = false;
+
     public Furnace() {
 
         smeltingContainer.Init(1);
         smeltedContainer.Init(1);
-
-        progress = 0;
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (smeltingItem != null && isRunning) {
