@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RecipeListController : MonoBehaviour
 {
+    public List<CraftingRecipe> unlockedRecipes = new List<CraftingRecipe>();
 
     public GameObject recipeListItemPrefab;
     public List<Recipe> recipeList = new List<Recipe>();
@@ -15,27 +16,10 @@ public class RecipeListController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateList();
-    }
-
-    // Update is called once per frame
-    public void CreateList()
-    {
-        string[] assetNames = AssetDatabase.FindAssets("Recipe", new[] { "Assets/Items/Recipes" });
-        recipeList.Clear();
-        foreach (string recipeName in assetNames)
-        {
-            var path = AssetDatabase.GUIDToAssetPath(recipeName);
-            var recipe = AssetDatabase.LoadAssetAtPath<Recipe>(path);
-
-            if (recipe is CraftingRecipe)
-            {
-                recipeList.Add(recipe);
-            }
-        }
         CreateRecipes();
         UpdateRequireditems();
     }
+
 
     public void CreateRecipes()
     {
