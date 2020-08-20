@@ -9,12 +9,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Item item;
     public Image icon;
     public Sprite defaultIcon = null;
-    public GameObject labelPrefab;
     public int amount;
     public Text amountText;
     public SlotType slotType = SlotType.General;
 
-    private GameObject label;
     private Color oldColor;
 
     public void Start()
@@ -83,24 +81,33 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         SavedSlot holdingItem = InventoryController.instance.holdingItem;
 
-        if (eventData.pointerPress.tag != "InventorySlot" ||
-           !holdingItem.item.insertsInto.Contains(this.slotType))
-        {
+        if (eventData.pointerPress.tag != "InventorySlot" || !holdingItem.item.insertsInto.Contains(this.slotType)) {
             return;
         }
-        
+
+        InventoryController.instance.CreateLabel(holdingItem.item.name);
+
         //If this slot is free, insert it into this slot
         if (this.item == null)
         {
             this.SetItem(holdingItem.item, holdingItem.amount);
             InventoryController.instance.DestroyTemporaryHeldItem();
         }
-        //If they are the same item and the amount fits, add them together
-        else if (this.item == holdingItem.item && this.amount + holdingItem.amount <= this.item.stackAmount)
+        //If they are the same item
+        else if (this.item == holdingItem.item)
         {
-            this.amount += holdingItem.amount;
-            amountText.text = amount.ToString();
-            InventoryController.instance.DestroyTemporaryHeldItem();
+            //If they are the same item and the amount fits into the spot, add the amounts together
+            if (this.amount + holdingItem.amount <= this.item.stackAmount) {
+                this.SetAmount(this.amount + holdingItem.amount);
+                InventoryController.instance.DestroyTemporaryHeldItem();
+            }
+            //If they are the same item and the amount doesn't fit, add as much as possible
+            else {
+                int amountToFill = this.item.stackAmount - this.amount;
+                this.SetAmount(this.amount + amountToFill);
+                InventoryController.instance.SetTemporaryHeldItemAmount(holdingItem.amount - amountToFill);
+            }
+            
         }
         //If they are different items, swap them
         else
@@ -117,17 +124,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (item != null)
-        {
-            label = Instantiate(labelPrefab);
-            label.GetComponentInChildren<Text>().text = item.itemName;
-            label.transform.SetParent(GameObject.Find("Canvas").transform);
+        if (item != null && InventoryController.instance.holdingItem == null) {
+            InventoryController.instance.CreateLabel(item.itemName);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Destroy(label);
+        InventoryController.instance.DestroyLabel();
     }
 }
 public enum SlotType

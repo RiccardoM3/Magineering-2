@@ -14,6 +14,7 @@ public class InventoryController : MonoBehaviour
     public GameObject inventoryPrefab;
     public GameObject hotbarPrefab;
     public GameObject draggedItemPrefab;
+    public GameObject labelPrefab;
     public Container inventoryContainer = new Container();
     public Container hotbarContainer = new Container();
     public bool isActive;
@@ -22,6 +23,7 @@ public class InventoryController : MonoBehaviour
 
     public SavedSlot holdingItem = null;
     public GameObject draggedItem;
+    public GameObject label;
 
     private bool allowHotbarScrolling;
     private int activeSlotIndex = 0;
@@ -76,7 +78,7 @@ public class InventoryController : MonoBehaviour
     {
         for (int i = 0; i < debugItems.Count; i++)
         {
-            addToInventory(debugItems[i].item, debugItems[i].amount);
+            AddToInventory(debugItems[i].item, debugItems[i].amount);
         }
     }
 
@@ -213,6 +215,7 @@ public class InventoryController : MonoBehaviour
         if (_interface != null)
         {
             Destroy(_interface);
+            DestroyLabel();
             CreateHotbar();
             LockCursorFreeCamera();
             AllowHotbarScrolling();
@@ -268,13 +271,20 @@ public class InventoryController : MonoBehaviour
         draggedItem.transform.SetParent(_interface.transform); //Assign the newly created Image GameObject as a parent of the Parent Panel.
     }
 
+    public void SetTemporaryHeldItemAmount(int amt) {
+        if (draggedItem != null) {
+            holdingItem.amount = amt;
+            draggedItem.GetComponentInChildren<Text>().text = amt.ToString();
+        }
+    }
+
     public void DestroyTemporaryHeldItem()
     {
         holdingItem = null;
         Destroy(draggedItem);
     }
 
-    public void addToInventory(Item item, int amount)
+    public void AddToInventory(Item item, int amount)
     {
         //Attempt to add to hotbar
         int remaining = hotbarContainer.InsertItem(item, amount);
@@ -293,13 +303,25 @@ public class InventoryController : MonoBehaviour
         
     }
 
-    public int subtractFromInventory(Item item, int amount)
+    public int SubtractFromInventory(Item item, int amount)
     {
         int remaining = amount;
         remaining = inventoryContainer.SubtractItem(item, remaining);
         remaining = hotbarContainer.SubtractItem(item, remaining);
         
         return remaining;
+    }
+
+    public void CreateLabel(String name) {
+        label = Instantiate(labelPrefab);
+        label.GetComponentInChildren<Text>().text = name;
+        label.transform.SetParent(GameObject.Find("Canvas").transform);
+    }
+
+    public void DestroyLabel() {
+        if (label != null) {
+            Destroy(label);
+        }
     }
 
 }

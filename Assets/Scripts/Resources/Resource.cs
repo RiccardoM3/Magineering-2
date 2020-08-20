@@ -25,7 +25,7 @@ public class Resource : MonoBehaviour
             {
                 int quantity = Random.Range(droppableItem.minAmount, droppableItem.maxAmount);
                 /*Debug.Log("Giving " + quantity.ToString() + " " + droppableItem.item.itemName);*/
-                InventoryController.instance.addToInventory(droppableItem.item, quantity);
+                InventoryController.instance.AddToInventory(droppableItem.item, quantity);
             } else
             {
                 /*Debug.Log("Unlucky! You got nothing.");*/

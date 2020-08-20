@@ -88,12 +88,12 @@ public class RecipeListController : MonoBehaviour
         if (canCraft)
         {
             Recipe recipe = selectedRecipe.GetComponent<RecipeListItem>().recipe;
-            InventoryController.instance.addToInventory(recipe.item, recipe.amount);
+            InventoryController.instance.AddToInventory(recipe.item, recipe.amount);
 
             foreach (RequiredItemSlot requiredItemSlot in requiredItems)
             {
                 requiredItemSlot.SubtractRequiredAmount();
-                InventoryController.instance.subtractFromInventory(requiredItemSlot.item, requiredItemSlot.requiredAmount);
+                InventoryController.instance.SubtractFromInventory(requiredItemSlot.item, requiredItemSlot.requiredAmount);
             }
         }
     }
