@@ -9,11 +9,11 @@ public class WireItem : Item {
 
     public override void Hover() {
         base.Hover();
-        WireManager.instance.startPlacingWires(this);
+        WireManager.instance.StartPlacingWires(this);
     }
 
     public override void Unhover() {
         base.Unhover();
-        WireManager.instance.stopPlacingWires();
+        WireManager.instance.StopPlacingWires();
     }
 }

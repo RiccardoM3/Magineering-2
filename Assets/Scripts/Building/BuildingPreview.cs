@@ -98,13 +98,17 @@ public class BuildingPreview : MonoBehaviour
     {
         Instantiate(building, transform.position, transform.rotation);
         InventoryController.instance.activeSlot.SubtractAmount(1);
-        InventoryController.instance.hotbarContainer.saveItems();
+        InventoryController.instance.hotbarContainer.SaveItems();
 
         if (isSnapped) {
            activeSnapPoint.SetActive(false);
         }
 
-        Destroy(this.gameObject);
+        BuildingManger.instance.StopBuilding();
+        if (InventoryController.instance.activeSlot.item != null) {
+            BuildingItem item = InventoryController.instance.activeSlot.item as BuildingItem;
+            BuildingManger.instance.StartBuilding(item.preview);
+        }
     }
 
     //Returns the distance to fire a raycast such that the horizontal distance will equal maxPlacementRange

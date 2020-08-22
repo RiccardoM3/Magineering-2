@@ -32,7 +32,7 @@ public class Container
         }
 
         slots = slotHolder.GetComponentsInChildren<InventorySlot>();
-        InventoryController.instance.SaveContainers += saveItems;
+        InventoryController.instance.SaveContainers += SaveItems;
         updateGUI();
     }
 
@@ -167,7 +167,7 @@ public class Container
         }
     }
 
-    public void saveItems()
+    public void SaveItems()
     {
         if (slotHolder != null)
         {

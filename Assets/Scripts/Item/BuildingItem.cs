@@ -6,21 +6,16 @@ using UnityEngine;
 public class BuildingItem : Item
 {
     public GameObject preview;
-    private GameObject previewHologram;
 
     public override void Hover()
     {
         base.Hover();
-        previewHologram = Instantiate(preview);
+        BuildingManger.instance.StartBuilding(preview);
     }
 
     public override void Unhover()
     {
         base.Unhover();
-        if (previewHologram != null)
-        {
-            Destroy(previewHologram);
-            previewHologram = null;
-        }
+        BuildingManger.instance.StopBuilding();
     }
 }

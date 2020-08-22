@@ -32,6 +32,7 @@ public class WireManager : MonoBehaviour
     private List<WireSystem> wireSystems = new List<WireSystem>();
 
     private enum State {
+        Inactive,
         FirstNode,
         SecondNode
     }
@@ -51,9 +52,27 @@ public class WireManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CheckIfActiveStateChanged()) {
+            return;
+        }
+
         if (isPlacingWires) {
             PlaceWires();
         }
+    }
+
+    private bool CheckIfActiveStateChanged() {
+        if (isPlacingWires && state == State.FirstNode && Input.GetMouseButtonDown(1)) {
+            StopPlacingWires();
+            state = State.Inactive;
+            return true;
+        }
+        else if (!isPlacingWires && state == State.Inactive && Input.GetMouseButtonDown(0)) {
+            StartPlacingWires(InventoryController.instance.activeSlot.item as WireItem);
+            return true;
+        }
+
+        return false;
     }
 
     private void PlaceWires() {
@@ -83,7 +102,7 @@ public class WireManager : MonoBehaviour
         }
     }
 
-    public void startPlacingWires(WireItem wire) {
+    public void StartPlacingWires(WireItem wire) {
         currentWireType = wire;
         isPlacingWires = true;
         isValid = true;
@@ -91,7 +110,7 @@ public class WireManager : MonoBehaviour
         firstWireNodePreview = Instantiate(wireNodePreview);
     }
 
-    public void stopPlacingWires() {
+    public void StopPlacingWires() {
         isPlacingWires = false;
         DestroyAllPreviews();
     }
@@ -169,14 +188,14 @@ public class WireManager : MonoBehaviour
     public void FinalisePlacement() {
         GetAndLinkNodes();
         InventoryController.instance.activeSlot.SubtractAmount(1);
-        InventoryController.instance.hotbarContainer.saveItems();
-        stopPlacingWires();
+        InventoryController.instance.hotbarContainer.SaveItems();
 
-        /*Debug.Log("------BEGIN------");
-        for (int i = 0; i < wireSystems.Count; i++) {
-            Debug.Log(wireSystems[i].wireNodes.Count);
+        StopPlacingWires();
+        if (InventoryController.instance.activeSlot.item != null) {
+            WireItem item = InventoryController.instance.activeSlot.item as WireItem;
+            StartPlacingWires(item);
+
         }
-        Debug.Log("-------END-------");*/
     }
 
     public void GetAndLinkNodes() {
