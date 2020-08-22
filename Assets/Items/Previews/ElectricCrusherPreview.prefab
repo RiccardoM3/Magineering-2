@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6077571300772444541}
-  - component: {fileID: 570613581943319498}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,19 +31,6 @@ Transform:
   m_Father: {fileID: 3863062512010191938}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &570613581943319498
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055611636283353067}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &3192716107436732157
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3863062512010191938}
   - component: {fileID: 5081908200787879714}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ElectricCrusherPreview
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,9 +93,9 @@ GameObject:
   - component: {fileID: 1178417307483801378}
   - component: {fileID: 1947122388274976582}
   - component: {fileID: 7273001982472692393}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: ElectricCrusherBuilding
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,6 +227,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WireNodeBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
+        type: 3}
+      propertyPath: m_TagString
+      value: Preview
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -1326129138154624336, guid: f092dc18da23aa84b84f1d78c5eba417, type: 3}

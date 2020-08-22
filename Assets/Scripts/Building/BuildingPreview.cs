@@ -116,22 +116,34 @@ public class BuildingPreview : MonoBehaviour
     private void GetPosition() {
 
         RaycastHit hit;
-        var ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         float raycastRange = CalcRaycastDistance();
 
         isSnapped = false;
         isValid = true;
 
         //fire raycast in snap points layer
-        int snapPointlayerMask = 1 << LayerMask.NameToLayer("SnapPoints");
-        if (Physics.Raycast(ray, out hit, raycastRange, snapPointlayerMask)) {
-            for (int i = 0; i < snapTags.Count; i++) {
-                if (hit.transform.tag == snapTags[i]) {
-                    isSnapped = true;
-                    spawnPos = hit.transform.GetChild(0).position + initialOffset;
-                    snappedRotation = hit.transform.GetComponentInChildren<Transform>().rotation;
-                    activeSnapPoint = hit.transform.gameObject;
-                    UpdateValidity(hit);
+        if (!Input.GetKey(KeyCode.LeftControl) || !canBeFreePlaced) {
+            int snapPointlayerMask = 1 << LayerMask.NameToLayer("SnapPoints");
+            RaycastHit[] hits = Physics.RaycastAll(ray.origin, ray.direction, snapPointlayerMask);
+            if (hits.Length > 0) {          //if the raycast hit something
+                int index = 0;
+                bool found = false;
+                while (index < hits.Length && !found) {       //loop through all intersection hits
+
+                    hit = hits[index];
+                    for (int i = 0; i < snapTags.Count; i++) {          //check if the hit was a valid snaptag
+                        if (hit.transform.tag == snapTags[i]) {
+                            isSnapped = true;
+                            spawnPos = hit.transform.parent.Find("SpawnPoint").transform.position + initialOffset;
+                            snappedRotation = hit.transform.parent.Find("SpawnPoint").transform.rotation;
+                            activeSnapPoint = hit.transform.parent.gameObject;
+                            UpdateValidity(hit);
+                            found = true;   //break outter loop when first valid hit is found
+                        }
+                    }
+
+                    index++;
                 }
             }
         }

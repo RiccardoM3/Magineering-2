@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5099079065832547979}
   m_Layer: 2
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6250361293663233158}
   m_Layer: 2
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +250,7 @@ PrefabInstance:
     - target: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
         type: 3}
       propertyPath: m_TagString
-      value: WireNode
+      value: Preview
       objectReference: {fileID: 0}
     - target: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
         type: 3}

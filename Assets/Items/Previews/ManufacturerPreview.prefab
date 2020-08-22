@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6226500712987465953}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4716941884740957676}
   - component: {fileID: 8619929495629473455}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: ManufacturerPreview
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 6968608445818610415}
   - component: {fileID: 7955077316327956060}
   - component: {fileID: 5050459840164666092}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,12 @@ PrefabInstance:
     - target: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
         type: 3}
       propertyPath: m_TagString
-      value: WireNode
+      value: Preview
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3253015561829717373, guid: f092dc18da23aa84b84f1d78c5eba417, type: 3}

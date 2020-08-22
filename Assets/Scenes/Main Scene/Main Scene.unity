@@ -2182,13 +2182,17 @@ PrefabInstance:
     - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: debugItems.Array.data[9].item
       value: 
-      objectReference: {fileID: 11400000, guid: f8f4a9ee9d8e88742b3ce98c5dca3953,
+      objectReference: {fileID: 11400000, guid: af8e3579a56c213499591a65f45b8f59,
         type: 2}
     - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: labelPrefab
       value: 
       objectReference: {fileID: 1393672384623405577, guid: cd1ee6802fc9f0943836da8de340cbc7,
         type: 3}
+    - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: debugItems.Array.data[9].amount
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3855837083055486782, guid: c6453f8e1f814744d8b94e5a6d1f9942,
         type: 3}
       propertyPath: m_Cameras.Array.size
