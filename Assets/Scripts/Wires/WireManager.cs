@@ -32,7 +32,6 @@ public class WireManager : MonoBehaviour
     private List<WireSystem> wireSystems = new List<WireSystem>();
 
     private enum State {
-        Inactive,
         FirstNode,
         SecondNode
     }
@@ -52,28 +51,12 @@ public class WireManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CheckIfActiveStateChanged()) {
-            return;
-        }
 
         if (isPlacingWires) {
             PlaceWires();
         }
     }
 
-    private bool CheckIfActiveStateChanged() {
-        if (isPlacingWires && state == State.FirstNode && Input.GetMouseButtonDown(1)) {
-            StopPlacingWires();
-            state = State.Inactive;
-            return true;
-        }
-        else if (!isPlacingWires && state == State.Inactive && Input.GetMouseButtonDown(0)) {
-            StartPlacingWires(InventoryController.instance.activeSlot.item as WireItem);
-            return true;
-        }
-
-        return false;
-    }
 
     private void PlaceWires() {
         CheckValidity();

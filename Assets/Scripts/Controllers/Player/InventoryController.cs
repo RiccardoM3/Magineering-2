@@ -15,6 +15,7 @@ public class InventoryController : MonoBehaviour
     public GameObject hotbarPrefab;
     public GameObject draggedItemPrefab;
     public GameObject labelPrefab;
+    public GameObject backgroundCover;
     public Container inventoryContainer = new Container();
     public Container hotbarContainer = new Container();
     public bool isActive;
@@ -202,6 +203,7 @@ public class InventoryController : MonoBehaviour
         _interface.transform.SetParent(GameObject.Find("Canvas").transform, false);
         FreeCursorLockCamera();
         PreventHotbarScrolling();
+        backgroundCover.SetActive(true);
         isActive = true;
 
         if (activeSlot.item != null)
@@ -221,6 +223,7 @@ public class InventoryController : MonoBehaviour
             AllowHotbarScrolling();
             DestroyTemporaryHeldItem();
             UnsubscribeAll();
+            backgroundCover.SetActive(false);
         }
         isActive = false;
     }
