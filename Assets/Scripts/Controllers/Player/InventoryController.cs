@@ -150,7 +150,7 @@ public class InventoryController : MonoBehaviour
         //Add new focus outline
         activeSlotIndex = index;
         activeSlot = hotbarContainer.slots[index];
-        activeSlot.transform.Find("Outline").GetComponent<Image>().color = Color.yellow;
+        activeSlot.transform.Find("Outline").GetComponent<Image>().color = new Color(0f, 165f/255f, 224f/255f);
         if (activeSlot.item != null)
         {
             activeSlot.item.Hover();
