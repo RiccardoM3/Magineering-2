@@ -15,6 +15,7 @@ public class InventoryController : MonoBehaviour
     public GameObject hotbarPrefab;
     public GameObject draggedItemPrefab;
     public GameObject labelPrefab;
+    public GameObject menuPrefab;
     public GameObject backgroundCover;
     public Container inventoryContainer = new Container();
     public Container hotbarContainer = new Container();
@@ -86,11 +87,9 @@ public class InventoryController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isActive)
-        {
+        if (!isActive) {
             actionController.checkForActions();
         }
-        
 
         //Inventory Button
         if (Input.GetKeyDown("i") || (Input.GetKeyDown(KeyCode.Escape) && isActive))
@@ -159,12 +158,9 @@ public class InventoryController : MonoBehaviour
 
     public void ToggleActiveState()
     {
-        if (isActive)
-        {
+        if (isActive) {
             Deactivate();
-        }
-        else
-        {
+        } else {
             Activate();
         }
     }
@@ -325,6 +321,10 @@ public class InventoryController : MonoBehaviour
         if (label != null) {
             Destroy(label);
         }
+    }
+
+    public void OpenMenuInterface() {
+        OpenInterface(menuPrefab);
     }
 
 }

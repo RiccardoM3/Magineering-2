@@ -22,7 +22,6 @@ public class ActionController
             }
         }
 
-
         if (Input.GetMouseButtonDown(0))
         {
             var ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -33,12 +32,14 @@ public class ActionController
                     interactable.LeftClickInteract();
                 }
             }
-
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            InventoryController.instance.CloseActiveInterface();
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (InventoryController.instance._interface != null) {
+                InventoryController.instance.CloseActiveInterface();
+            } else {
+                InventoryController.instance.OpenMenuInterface();
+            }            
         }
     }
 }
