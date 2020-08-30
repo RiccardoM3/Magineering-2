@@ -14,10 +14,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public SlotType slotType = SlotType.General;
 
     private Color oldColor;
+    private Color emptyColor;
+    private Color unemptyColor;
+    private Image backgroundImage;
 
-    public void Start()
-    {
+    public void Awake() {
         oldColor = icon.color;
+        emptyColor = new Color(0.75f, 0.7566214f, 1f, 0.3137255f);
+        unemptyColor = new Color(0.75f, 0.7566214f, 1f, 1f);
+        backgroundImage = GetComponent<Image>();
     }
 
     public void SetItem(Item newItem, int amt) {
@@ -27,28 +32,26 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             icon.sprite = item.icon;
             icon.color = new Color(255, 255, 255, 1);
             amountText.text = amount.ToString();
+            backgroundImage.color = unemptyColor;
         } else {
             this.amount = 0;
             icon.sprite = null;
             icon.color = new Color(255, 255, 255, 0);
             amountText.text = "";
+            backgroundImage.color = emptyColor;
         }
     }
 
     //Assumes there is sufficient items
     public void SubtractAmount(int subtractAmt)
     {
-        if (this.item == null)
-        {
+        if (this.item == null) {
             return;
         }
 
-        if (this.amount > subtractAmt)
-        {
+        if (this.amount > subtractAmt) {
             this.SetAmount(this.amount - subtractAmt);
-        }
-        else
-        {
+        } else {
             this.ClearSlot();
         }
     }
@@ -59,12 +62,16 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         SetAmount(0);
         amountText.enabled = true;
 
+        //change icon colour
         icon.sprite = defaultIcon;
         if (defaultIcon == null) {
             icon.color = new Color(255, 255, 255, 0);
         } else {
             icon.color = oldColor;
         }
+
+        //change background colour
+        backgroundImage.color = emptyColor;
 
         InventoryController.instance.InvokeItemUpdate();
     }
