@@ -7,7 +7,7 @@ public class FuelUIController : MonoBehaviour {
     public Sprite firePrefab;
     public Sprite emptyFirePrefab;
     public Image fireSprite;
-    public Image burnTimer;
+    public Slider burnTimer;
 
     void Start() {
         ShowInactive();
@@ -27,6 +27,6 @@ public class FuelUIController : MonoBehaviour {
         if (percent >= 1) {
             percent = 1;
         }
-        burnTimer.transform.localScale = new Vector3(1, percent, 1);
+        burnTimer.value = percent * burnTimer.maxValue;
     }
 }

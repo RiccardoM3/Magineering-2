@@ -6,7 +6,6 @@ public class ActionController
 {
     public float range = 10f;
 
-    // Update is called once per frame
     public void checkForActions()
     {
         RaycastHit hit;
