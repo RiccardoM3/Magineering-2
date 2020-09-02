@@ -87,49 +87,7 @@ public class InventoryController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isActive) {
-            actionController.checkForActions();
-        }
-
-        //Inventory Button
-        if (Input.GetKeyDown("i") || (Input.GetKeyDown(KeyCode.Escape) && isActive))
-        {
-            ToggleActiveState();
-        }
-
-        //Hotbar active slot buttons
-        for (int i = 0; i < hotbarKeyCodes.Length; i++)
-        {
-            if (Input.GetKeyDown(hotbarKeyCodes[i]))
-            {
-                setActiveSlot(i);
-            }
-        }
-
-        if (allowHotbarScrolling)
-        {
-            //Negative to reverse the order of scrolling
-            int slotIncrement = -(int)Input.mouseScrollDelta.y;
-
-            //Ignore if not scrolling
-            if (slotIncrement != 0)
-            {
-                //Handle negative numbers by Shifting up 10, doesnt change the value
-                if (slotIncrement < 0)
-                {
-                    slotIncrement += 10;
-                }
-                setActiveSlot((activeSlotIndex + slotIncrement) % 10);
-            }
-        }
-        
-        //If you right click:
-        if (Input.GetMouseButtonDown(1)) {
-            if (activeSlot.item != null)
-            {
-                activeSlot.item.Use();
-            }
-        }
+        HandleInput();
     }
 
     public void setActiveSlot(int index)
@@ -156,29 +114,13 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void ToggleActiveState()
-    {
-        if (isActive) {
-            Deactivate();
-        } else {
-            Activate();
-        }
-    }
-
-    public void Activate()
+    public void OpenInventory()
     {
         OpenInterface(inventoryPrefab);
         inventoryContainer.slotHolder = _interface.transform.GetChild(0).GetChild(0).gameObject;
         inventoryContainer.Reinit();
         hotbarContainer.slotHolder = _interface.transform.GetChild(0).GetChild(1).gameObject;
         hotbarContainer.Reinit();
-    }
-
-    public void Deactivate()
-    {
-        CloseActiveInterface();
-        AllowHotbarScrolling();
-        setActiveSlot(activeSlotIndex);
     }
 
     public void AllowHotbarScrolling()
@@ -191,8 +133,7 @@ public class InventoryController : MonoBehaviour
         allowHotbarScrolling = false;
     }
 
-    public void OpenInterface(GameObject interfaceObj)
-    {
+    public void OpenInterface(GameObject interfaceObj) {
         CloseActiveInterface();
         DestroyHotbar();
         _interface = Instantiate(interfaceObj);
@@ -208,8 +149,7 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void CloseActiveInterface()
-    {
+    public void CloseActiveInterface() {
         if (_interface != null)
         {
             Destroy(_interface);
@@ -220,54 +160,50 @@ public class InventoryController : MonoBehaviour
             DestroyTemporaryHeldItem();
             UnsubscribeAll();
             backgroundCover.SetActive(false);
+            setActiveSlot(activeSlotIndex);
         }
         isActive = false;
     }
 
-    public void UnsubscribeAll()
-    {
-        if (SaveContainers != null)
-            foreach (var method in SaveContainers.GetInvocationList())
+    public void UnsubscribeAll() {
+        if (SaveContainers != null) {
+            foreach (var method in SaveContainers.GetInvocationList()) {
                 SaveContainers -= (method as OnItemUpdate);
+            }
+        }
     }
-     
 
-    public void CreateHotbar()
-    {
+    public void CreateHotbar() {
          _hotbar = Instantiate(hotbarPrefab, GameObject.Find("Canvas").transform);
         hotbarContainer.slotHolder = _hotbar.transform.GetChild(0).gameObject;
         hotbarContainer.Reinit(hotbarContainer.savedSlots);
     }
 
-    public void DestroyHotbar()
-    {
+    public void DestroyHotbar() {
         Destroy(_hotbar);
         _hotbar = null;
     }
 
-    public void FreeCursorLockCamera()
-    {
+    public void FreeCursorLockCamera() {
         GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().mouseLook.lockCursor = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    public void LockCursorFreeCamera()
-    {
+    public void LockCursorFreeCamera() {
         GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().mouseLook.lockCursor = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    public void SetTemporaryHeldItem(InventorySlot inventorySlot)
-    {
+    public void SetTemporaryHeldItem(InventorySlot inventorySlot) {
         holdingItem = new SavedSlot();
         holdingItem.copyInventorySlot(inventorySlot);
 
         draggedItem = Instantiate(draggedItemPrefab);
         draggedItem.GetComponentInChildren<Image>().sprite = inventorySlot.icon.sprite;
         draggedItem.GetComponentInChildren<Text>().text = inventorySlot.amount.ToString();
-        draggedItem.transform.SetParent(_interface.transform); //Assign the newly created Image GameObject as a parent of the Parent Panel.
+        draggedItem.transform.SetParent(_interface.transform);
     }
 
     public void SetTemporaryHeldItemAmount(int amt) {
@@ -277,14 +213,12 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void DestroyTemporaryHeldItem()
-    {
+    public void DestroyTemporaryHeldItem() {
         holdingItem = null;
         Destroy(draggedItem);
     }
 
-    public void AddToInventory(Item item, int amount)
-    {
+    public void AddToInventory(Item item, int amount) {
         //Attempt to add to hotbar
         int remaining = hotbarContainer.InsertItem(item, amount);
 
@@ -302,8 +236,7 @@ public class InventoryController : MonoBehaviour
         
     }
 
-    public int SubtractFromInventory(Item item, int amount)
-    {
+    public int SubtractFromInventory(Item item, int amount) {
         int remaining = amount;
         remaining = inventoryContainer.SubtractItem(item, remaining);
         remaining = hotbarContainer.SubtractItem(item, remaining);
@@ -323,8 +256,50 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void OpenMenuInterface() {
-        OpenInterface(menuPrefab);
-    }
+    private void HandleInput() {
+        //Escape
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (isActive) {
+                CloseActiveInterface();
+            }
+            else {
+                OpenInterface(menuPrefab);
+            }
+        }
 
+        //Inventory Button
+        if (Input.GetKeyDown("f")) {
+            if (isActive) {
+                CloseActiveInterface();
+            }
+            else {
+                OpenInventory();
+            }
+        }
+
+        //Hotbar active slot buttons
+        if (!isActive) {
+            for (int i = 0; i < hotbarKeyCodes.Length; i++) {
+                if (Input.GetKeyDown(hotbarKeyCodes[i])) {
+                    setActiveSlot(i);
+                }
+            }
+        }
+
+        //Hotbar scrolling
+        if (allowHotbarScrolling) {
+            //Negative to reverse the order of scrolling
+            int slotIncrement = -(int)Input.mouseScrollDelta.y;
+
+            //Ignore if not scrolling
+            if (slotIncrement != 0) {
+                //Handle negative numbers by Shifting up 10, doesnt change the value
+                if (slotIncrement < 0) {
+                    slotIncrement += 10;
+                }
+                setActiveSlot((activeSlotIndex + slotIncrement) % 10);
+            }
+        }
+
+    }
 }
