@@ -22,6 +22,19 @@ public class Item : ScriptableObject
         return null;
     }
 
+    public override bool Equals(object obj) {
+        if (obj == null) return false;
+
+        Item item = obj as Item;
+        if (item != null) {
+            if (item.itemName == this.itemName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public virtual void Use()
     {
         //This method is designed to be overwritten

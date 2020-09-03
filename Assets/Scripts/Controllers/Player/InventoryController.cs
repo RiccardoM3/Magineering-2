@@ -233,7 +233,9 @@ public class InventoryController : MonoBehaviour
         {
             Debug.Log(remaining + " overflow!");        //TODO
         }
-        
+
+        ItemNotificationController.instance.UpdateOrCreateNotification(item, amount);
+
     }
 
     public int SubtractFromInventory(Item item, int amount) {
