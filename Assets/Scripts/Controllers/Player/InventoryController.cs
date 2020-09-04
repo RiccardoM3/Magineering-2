@@ -219,6 +219,9 @@ public class InventoryController : MonoBehaviour
     }
 
     public void AddToInventory(Item item, int amount) {
+
+        ItemNotificationController.instance.UpdateOrCreateNotification(item, amount);
+
         //Attempt to add to hotbar
         int remaining = hotbarContainer.InsertItem(item, amount);
 
@@ -233,9 +236,6 @@ public class InventoryController : MonoBehaviour
         {
             Debug.Log(remaining + " overflow!");        //TODO
         }
-
-        ItemNotificationController.instance.UpdateOrCreateNotification(item, amount);
-
     }
 
     public int SubtractFromInventory(Item item, int amount) {

@@ -43,9 +43,9 @@ public class Furnace {
     }
 
     public void ConnectToUI() {
-        smeltingContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).Find("SmeltingItemSlotHolder").gameObject;
+        smeltingContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("FurnaceSection").Find("SmeltingItemSlotHolder").gameObject;
         smeltingContainer.Reinit();
-        smeltedContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).Find("SmeltedItemSlotHolder").gameObject;
+        smeltedContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("FurnaceSection").Find("SmeltedItemSlotHolder").gameObject;
         smeltedContainer.Reinit();
 
         progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();

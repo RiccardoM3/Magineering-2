@@ -72,9 +72,9 @@ public class Crusher {
     }
 
     public void ConnectToUI() {
-        crushingContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).Find("CrushingItemSlotHolder").gameObject;
+        crushingContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("CrusherSection").Find("CrushingItemSlotHolder").gameObject;
         crushingContainer.Reinit();
-        crushedContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).Find("CrushedItemSlotHolder").gameObject;
+        crushedContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("CrusherSection").Find("CrushedItemSlotHolder").gameObject;
         crushedContainer.Reinit();
         progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();
 

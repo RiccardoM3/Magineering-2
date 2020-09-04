@@ -3223,7 +3223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: debugItems.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: debugItems.Array.data[5].item
@@ -3294,6 +3294,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5101372461110030665, guid: 6e72fb014dd430243b2b6b490ea9d876,
         type: 3}
+    - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: debugItems.Array.data[10].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d9a29fd235d8b041a8a9fa477a5c082,
+        type: 2}
+    - target: {fileID: 1801674597, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: debugItems.Array.data[10].amount
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3855837083055486782, guid: c6453f8e1f814744d8b94e5a6d1f9942,
         type: 3}
       propertyPath: m_Cameras.Array.size

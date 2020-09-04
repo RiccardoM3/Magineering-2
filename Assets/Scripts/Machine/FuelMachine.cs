@@ -65,7 +65,7 @@ public class FuelMachine : MonoBehaviour {
 
     public void ConnectToUI() {
         machine.ConnectInventoryToUI(UIPrefab);
-        fuelContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).Find("FuelSlotHolder").gameObject;
+        fuelContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("FuelSection").Find("FuelSlotHolder").gameObject;
         fuelContainer.Reinit();
         fuelContainer.savedSlots[0].ItemUpdate += () => UpdateFuelItems();
 
