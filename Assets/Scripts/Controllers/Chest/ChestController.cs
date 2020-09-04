@@ -24,7 +24,7 @@ public class ChestController : ManualMachine, IInteractable {
 
     public void RightClickInteract() {
         ConnectToUI();
-        chestContainer.slotHolder = InventoryController.instance._interface.transform.GetChild(0).GetChild(0).gameObject;
+        chestContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("ChestStorageSection").Find("ChestSlotHolder").gameObject;
         chestContainer.Reinit(chestContainer.savedSlots);
     }
 }

@@ -117,9 +117,9 @@ public class InventoryController : MonoBehaviour
     public void OpenInventory()
     {
         OpenInterface(inventoryPrefab);
-        inventoryContainer.slotHolder = _interface.transform.GetChild(0).GetChild(0).gameObject;
+        inventoryContainer.slotHolder = _interface.transform.Find("Sections").Find("ItemStorageSection").Find("InventorySlotHolder").gameObject;
         inventoryContainer.Reinit();
-        hotbarContainer.slotHolder = _interface.transform.GetChild(0).GetChild(1).gameObject;
+        hotbarContainer.slotHolder = _interface.transform.Find("Sections").Find("ItemStorageSection").Find("HotbarSlotHolder").gameObject;
         hotbarContainer.Reinit();
     }
 
