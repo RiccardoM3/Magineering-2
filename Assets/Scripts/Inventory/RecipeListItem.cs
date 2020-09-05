@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RecipeListItem : MonoBehaviour
 {
     public Image icon;
-    public new Text name;
-    public Text amount;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI amountText;
 
     public Recipe recipe;
     public GameObject requiredItemPrefab;
@@ -35,8 +36,8 @@ public class RecipeListItem : MonoBehaviour
         this.recipe = loadedRecipe;
 
         icon.sprite = loadedRecipe.item.icon;
-        name.text = loadedRecipe.item.itemName;
-        amount.text = loadedRecipe.amount.ToString();
+        nameText.SetText(loadedRecipe.item.itemName);
+        amountText.SetText("x" + loadedRecipe.amount.ToString());
     }
 
     public void LoadRequireditems(GameObject requiredItemsList)

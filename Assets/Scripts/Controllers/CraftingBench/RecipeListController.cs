@@ -26,7 +26,7 @@ public class RecipeListController : MonoBehaviour
         foreach (Recipe recipe in recipeList)
         {
             GameObject recipeListItem = Instantiate(recipeListItemPrefab);
-            recipeListItem.transform.SetParent(transform);
+            recipeListItem.transform.SetParent(transform, false);
             recipeListItem.GetComponent<RecipeListItem>().LoadRecipe(recipe);
             recipeListItems.Add(recipeListItem);
         }
