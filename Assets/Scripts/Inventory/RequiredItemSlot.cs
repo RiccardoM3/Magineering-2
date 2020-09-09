@@ -3,60 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class RequiredItemSlot : MonoBehaviour
 {
-    public Text itemName;
-    public Text amount;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI amount;
     public Image icon;
     public int inputtedAmount = 0;
     public int requiredAmount;
     public Item item;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetItem(SavedSlot savedSlot)
     {
         item = savedSlot.item;
-        itemName.text = savedSlot.item.itemName;
+        itemName.SetText(savedSlot.item.itemName);
         requiredAmount = savedSlot.amount;
-        amount.text = inputtedAmount.ToString() + " / " + requiredAmount.ToString();
+        this.SetAmount(inputtedAmount);
         icon.sprite = savedSlot.item.icon;
     }
 
     public void SetInputtedAmount(int amnt)
     {
         inputtedAmount = amnt;
-        amount.text = inputtedAmount.ToString() + " / " + requiredAmount.ToString();
+        this.SetAmount(inputtedAmount);
     }
 
     public void SubtractRequiredAmount()
     {
         inputtedAmount -= requiredAmount;
-        amount.text = inputtedAmount.ToString() + " / " + requiredAmount.ToString();
-    }
-
-    public int RemoveItems()
-    {
-        int currentAmount = inputtedAmount;
-        inputtedAmount = 0;
-        amount.text = inputtedAmount.ToString() + " / " + requiredAmount.ToString();
-        return currentAmount;
+        this.SetAmount(inputtedAmount);
     }
 
     public bool HasEnoughItems()
     {
         return inputtedAmount >= requiredAmount;
+    }
 
+    public void SetAmount(int amt) {
+        amount.SetText(amt.ToString() + " / " + requiredAmount.ToString());
+        if (this.HasEnoughItems()) {
+            amount.color = new Color(0.078f, 0.566f, 0f);
+        } else {
+            amount.color = new Color(0.766f, 0.14f, 0f);
+        }
     }
 }
