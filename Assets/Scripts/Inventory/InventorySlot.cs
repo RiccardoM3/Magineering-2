@@ -26,6 +26,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     public void SetItem(Item newItem, int amt) {
+
+        Item oldItem = this.item;
+
         this.item = newItem;
         this.amount = amt;
         if (newItem != null) {
@@ -40,6 +43,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             amountText.text = "";
             backgroundImage.color = emptyColor;
         }
+
+        if (newItem != null && oldItem != newItem && InventoryController.instance.activeSlot == this) {
+            this.item.Hover();
+        }
+
     }
 
     //Assumes there is sufficient items

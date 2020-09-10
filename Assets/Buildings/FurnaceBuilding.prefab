@@ -64,7 +64,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPrefab: {fileID: 3772203522902238711, guid: c49a94c48b076fd4b86fa6db0a88efce,
     type: 3}
-  fuelUI: {fileID: 0}
 --- !u!1 &4117762221028122983
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +76,7 @@ GameObject:
   - component: {fileID: 6035376635476547732}
   - component: {fileID: 7855938054379385134}
   - component: {fileID: 7522341529070996835}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Furnace
   m_Icon: {fileID: 0}
@@ -169,8 +168,8 @@ GameObject:
   - component: {fileID: 5457819182277088430}
   - component: {fileID: 1836372691028973278}
   - component: {fileID: 2272814670886394525}
-  - component: {fileID: 4874771845492138470}
-  m_Layer: 0
+  - component: {fileID: 6258225920238573959}
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Furnace
   m_Icon: {fileID: 0}
@@ -238,8 +237,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &4874771845492138470
-CapsuleCollider:
+--- !u!64 &6258225920238573959
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -248,7 +247,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
