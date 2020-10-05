@@ -21,7 +21,7 @@ public class Furnace {
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (smeltingItem != null && isRunning) {
-                SmeltingRecipe smeltingRecipe = smeltingItem.GetRecipe<SmeltingRecipe>() as SmeltingRecipe;
+                Recipe smeltingRecipe = smeltingItem.GetRecipe(Recipe.RecipeType.Smelting);
 
                 if (smeltingRecipe != null && (smeltingRecipe.item == smeltedContainer.savedSlots[0].item || smeltedContainer.savedSlots[0].item == null)) {
 
@@ -56,7 +56,7 @@ public class Furnace {
     }
 
     public bool CanSmelt() {
-        return smeltingItem != null && (smeltedContainer.savedSlots[0].item == null || smeltingItem.GetRecipe<Recipe>().item == smeltedContainer.savedSlots[0].item);
+        return smeltingItem != null && (smeltedContainer.savedSlots[0].item == null || smeltingItem.GetRecipe(Recipe.RecipeType.Smelting).item == smeltedContainer.savedSlots[0].item);
     }
 
     public void ResetProgress() {

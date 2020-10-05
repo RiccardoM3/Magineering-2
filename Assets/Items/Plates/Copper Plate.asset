@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d9745f71bd04f40bc4da0ac149b645, type: 3}
   m_Name: Copper Plate
   m_EditorClassIdentifier: 
-  itemName: New Item
+  itemName: Copper Plate
   stackAmount: 50
   recipes: []
   icon: {fileID: 0}
-  insertsInto: 
+  insertsInto: 00000000

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e752a48982ee71847b318302eeeec681, type: 3}
+  m_Script: {fileID: 11500000, guid: 338f6e87264e2f24e9f2940413245063, type: 3}
   m_Name: CopperCrushingRecipe
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: cce5152ba82a9fb4dbda623e4b0a90b6, type: 2}
@@ -17,4 +17,4 @@ MonoBehaviour:
   recipeItems:
   - item: {fileID: 11400000, guid: b073a2b4014c6ee47a30755fbbe8f68d, type: 2}
     amount: 1
-  amountOfClicks: 8
+  type: 2

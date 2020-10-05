@@ -17,5 +17,4 @@ MonoBehaviour:
   recipes:
   - {fileID: 11400000, guid: 8078d1651f9453446b03dbc2644ea5a8, type: 2}
   icon: {fileID: 21300000, guid: c7d1558d8cb13784b9cfefa2bce2b4d4, type: 3}
-  aspects: []
   insertsInto: 0000000002000000

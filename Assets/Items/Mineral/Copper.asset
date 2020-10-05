@@ -16,6 +16,8 @@ MonoBehaviour:
   stackAmount: 50
   recipes:
   - {fileID: 11400000, guid: 2b2a3970b8f279942baab90aff9bd14d, type: 2}
+  - {fileID: 11400000, guid: a51c7714d730ccc4a8dfa652ead09247, type: 2}
+  - {fileID: 11400000, guid: 03214498bb2668549933ec6070468f1b, type: 2}
+  - {fileID: 11400000, guid: cf668aae36c346a4ab97f1155049a316, type: 2}
   icon: {fileID: 21300000, guid: 008add8a44d8e2442ada304c9020f6f0, type: 3}
-  aspects: []
   insertsInto: 0000000003000000

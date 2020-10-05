@@ -15,7 +15,6 @@ MonoBehaviour:
   itemName: Copper Dust
   stackAmount: 50
   recipes:
-  - {fileID: 11400000, guid: 54cbdc723e2c5284e8f9a56e46fab814, type: 2}
+  - {fileID: 11400000, guid: 0ecd0dfb5c292644b93706e87e7a7bfb, type: 2}
   icon: {fileID: 21300000, guid: 78eb7e887406ed74cbf2bed7e3aae696, type: 3}
-  aspects: []
   insertsInto: 0000000002000000

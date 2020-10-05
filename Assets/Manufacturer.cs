@@ -31,7 +31,7 @@ public class Manufacturer
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (inputItem != null && isRunning) {
-                SmeltingRecipe smeltingRecipe = inputItem.GetRecipe<SmeltingRecipe>() as SmeltingRecipe;
+                Recipe smeltingRecipe = inputItem.GetRecipe(Recipe.RecipeType.Smelting);
 
                 if (smeltingRecipe != null && (smeltingRecipe.item == outputContainer.savedSlots[0].item || outputContainer.savedSlots[0].item == null)) {
 
@@ -69,7 +69,7 @@ public class Manufacturer
     }
 
     public bool CanSmelt() {
-        return inputItem != null && (outputContainer.savedSlots[0].item == null || inputItem.GetRecipe<Recipe>().item == outputContainer.savedSlots[0].item);
+        return inputItem != null && (outputContainer.savedSlots[0].item == null || inputItem.GetRecipe(Recipe.RecipeType.Smelting).item == outputContainer.savedSlots[0].item);
     }
 
     public void ResetProgress() {

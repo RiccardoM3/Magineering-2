@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e752a48982ee71847b318302eeeec681, type: 3}
+  m_Script: {fileID: 11500000, guid: 338f6e87264e2f24e9f2940413245063, type: 3}
   m_Name: IronOreCrushingRecipe
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: bb35fbf9a4b0a544493dabfb1fc76672, type: 2}
@@ -17,4 +17,4 @@ MonoBehaviour:
   recipeItems:
   - item: {fileID: 11400000, guid: be1fcfeeb7b3fd74a8aacb1728d1f6d7, type: 2}
     amount: 1
-  amountOfClicks: 8
+  type: 2

@@ -15,7 +15,9 @@ MonoBehaviour:
   itemName: Gold Ingot
   stackAmount: 50
   recipes:
-  - {fileID: 11400000, guid: cc06c6cee7a05ff4fb5d04944eeeb76b, type: 2}
+  - {fileID: 11400000, guid: a57f477ad995b13459cf73de7a96e8af, type: 2}
+  - {fileID: 11400000, guid: d93714699ea66b1478a6fae2a27e2a2d, type: 2}
+  - {fileID: 11400000, guid: cbe6de171a8cf464992361e581c5c16b, type: 2}
+  - {fileID: 11400000, guid: 44b1bae420405514ba279fc20622e0c3, type: 2}
   icon: {fileID: 21300000, guid: efd74152208cccd498df51914417c31c, type: 3}
-  aspects: []
   insertsInto: 0000000003000000

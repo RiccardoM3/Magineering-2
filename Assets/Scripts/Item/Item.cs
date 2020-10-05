@@ -12,9 +12,9 @@ public class Item : ScriptableObject
     //public List<Aspect> aspects = new List<Aspect>();         For future
     public List<SlotType> insertsInto = new List<SlotType>();
 
-    public Recipe GetRecipe<RecipeType>() {
+    public Recipe GetRecipe(Recipe.RecipeType recipeType) {
         for (int i = 0; i < this.recipes.Count; i++) {
-            if (recipes[i].GetType() == typeof(RecipeType)) {
+            if (recipes[i].type == recipeType) {
                 return recipes[i];
             }
         }
