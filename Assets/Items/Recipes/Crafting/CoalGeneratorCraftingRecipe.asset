@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 761ba13f525b0df41aa92736e2bc5edd, type: 3}
+  m_Script: {fileID: 11500000, guid: 338f6e87264e2f24e9f2940413245063, type: 3}
   m_Name: CoalGeneratorCraftingRecipe
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: a88d736f483757347a4c2eefae367dfa, type: 2}
@@ -21,4 +21,4 @@ MonoBehaviour:
     amount: 10
   - item: {fileID: 11400000, guid: b122c7aba187e1f4099b692e16085f4e, type: 2}
     amount: 5
-  craftingTime: 0
+  type: 0

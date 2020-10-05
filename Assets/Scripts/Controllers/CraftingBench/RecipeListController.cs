@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RecipeListController : MonoBehaviour
 {
-    public List<CraftingRecipe> unlockedRecipes = new List<CraftingRecipe>();
+    public List<Recipe> unlockedRecipes = new List<Recipe>();
 
     public GameObject recipeListItemPrefab;
     public List<Recipe> recipeList = new List<Recipe>();
