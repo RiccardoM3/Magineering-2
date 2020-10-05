@@ -172,10 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5d335b8e676f74a9ac96cccfa6dd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  electricityPrefab: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
-  emptyElectricityPrefab: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d,
+  electricityPrefab: {fileID: 21300000, guid: bd9a4eb303e29b741805f97207dc0eb8, type: 3}
+  emptyElectricityPrefab: {fileID: 21300000, guid: 3063124dafe170d44bcc33b728961ca6,
     type: 3}
-  fireSprite: {fileID: 4375535198022418100}
+  electricitySprite: {fileID: 4375535198022418100}
 --- !u!1 &905377588548084795
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 4375535198022418107}
   - component: {fileID: 4375535198022418100}
   m_Layer: 5
-  m_Name: ActiveFire
+  m_Name: ActiveElectricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 65}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4375535198022418107
 CanvasRenderer:
@@ -518,13 +518,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3063124dafe170d44bcc33b728961ca6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

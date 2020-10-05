@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7250860218980782112}
-  - component: {fileID: 7016140466654867544}
   - component: {fileID: 8957882098710542915}
+  - component: {fileID: 5754877688239207510}
   m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
@@ -33,22 +33,6 @@ Transform:
   m_Father: {fileID: 8339877320272428333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7016140466654867544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3624974254307128010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ebe501e0185ab34199881d63f6db18f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIPrefab: {fileID: 8806515384053336549, guid: 380794376c733b942897d674fa59508e,
-    type: 3}
-  WireNodeConnection: {fileID: 5553158620352930945}
-  requiredPowerPerTick: 10
 --- !u!65 &8957882098710542915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +46,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &5754877688239207510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3624974254307128010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade122d9264e3a7498d20183d5c1b807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 8806515384053336549, guid: 380794376c733b942897d674fa59508e,
+    type: 3}
+  WireNodeConnection: {fileID: 5553158620352930945}
+  requiredPowerPerTick: 10
 --- !u!1 &8167602845648217776
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class ElectricityUIController : MonoBehaviour
 {
     public Sprite electricityPrefab;
     public Sprite emptyElectricityPrefab;
-    public Image fireSprite;
+    public Image electricitySprite;
 
     void Start() {
         SetActive(false);
@@ -15,11 +15,9 @@ public class ElectricityUIController : MonoBehaviour
 
     public void SetActive(bool state) {
         if (state) {
-            fireSprite.sprite = electricityPrefab;
-            fireSprite.color = new Color(1, 1, 1);
+            electricitySprite.sprite = electricityPrefab;
         } else {
-            fireSprite.sprite = emptyElectricityPrefab;
-            fireSprite.color = new Color(0.4f, 0.4f, 0.4f);
+            electricitySprite.sprite = emptyElectricityPrefab;
         }
     }
 }
