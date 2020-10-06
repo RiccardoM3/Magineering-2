@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Copper Plate
   stackAmount: 50
   recipes: []
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1804f14a46614984fa0d307c3d1a1a94, type: 3}
   insertsInto: 00000000

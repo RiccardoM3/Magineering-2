@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Copper Wire
   stackAmount: 50
   recipes: []
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8d1e048941075a246baea287054f1285, type: 3}
   insertsInto: 00000000

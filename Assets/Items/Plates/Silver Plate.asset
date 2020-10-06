@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Silver Plate
   stackAmount: 50
   recipes: []
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6ac917af59a754d45968517f35fcf2bf, type: 3}
   insertsInto: 00000000

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Tin Wire
   stackAmount: 50
   recipes: []
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e9a948cc284c5e04a9204a3c41412120, type: 3}
   insertsInto: 00000000

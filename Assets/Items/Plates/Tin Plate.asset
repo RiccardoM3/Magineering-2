@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Tin Plate
   stackAmount: 50
   recipes: []
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6d7754f63d5dd514087b579383a5aff6, type: 3}
   insertsInto: 00000000

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Iron Plate
   stackAmount: 50
   recipes: []
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a9f71c31e286f1a4f89655b74a3dea29, type: 3}
   insertsInto: 00000000
