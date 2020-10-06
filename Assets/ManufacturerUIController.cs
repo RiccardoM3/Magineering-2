@@ -23,20 +23,20 @@ public class ManufacturerUIController : MonoBehaviour
 
     public void SetMode(int mode) {
 
-        Manufacturer.Mode manufacturerMode;
+        Recipe.RecipeType manufacturerMode;
 
         switch (mode) {
             case 0:
-                manufacturerMode = Manufacturer.Mode.Plates;
+                manufacturerMode = Recipe.RecipeType.PlateForming;
                 break;
             case 1:
-                manufacturerMode = Manufacturer.Mode.Rods;
+                manufacturerMode = Recipe.RecipeType.RodForming;
                 break;
             case 2:
-                manufacturerMode = Manufacturer.Mode.Wires;
+                manufacturerMode = Recipe.RecipeType.WireForming;
                 break;
             default:
-                manufacturerMode = Manufacturer.Mode.Plates;
+                manufacturerMode = Recipe.RecipeType.PlateForming;
                 break;
         }
 

@@ -14,26 +14,22 @@ public class Manufacturer
     private Item currentInputItem;
     private float progress = 0;
     private bool isRunning = false;
-    private Mode mode;
+    private Recipe.RecipeType mode;
     private ManufacturerUIController manufacturerUI;
 
-    [Serializable]
-    public enum Mode {
-        Plates,
-        Rods,
-        Wires
-    }
-
     public Manufacturer() {
+
+        SetMode(Recipe.RecipeType.PlateForming);
 
         inputContainer.Init(1);
         outputContainer.Init(1);
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (inputItem != null && isRunning) {
-                Recipe smeltingRecipe = inputItem.GetRecipe(Recipe.RecipeType.Smelting);
 
-                if (smeltingRecipe != null && (smeltingRecipe.item == outputContainer.savedSlots[0].item || outputContainer.savedSlots[0].item == null)) {
+                Recipe recipe = inputItem.GetRecipe(this.mode);
+
+                if (recipe != null && (recipe.item == outputContainer.savedSlots[0].item || outputContainer.savedSlots[0].item == null)) {
 
                     progress += 1;
 
@@ -43,8 +39,8 @@ public class Manufacturer
 
                     //if 100% complete
                     if (Mathf.Approximately(progress / requiredProgressTicks, 1f)) {
-                        outputContainer.InsertItem(smeltingRecipe.item, smeltingRecipe.amount);
-                        inputContainer.SubtractItem(smeltingRecipe.recipeItems[0].item, smeltingRecipe.recipeItems[0].amount);
+                        outputContainer.InsertItem(recipe.item, recipe.amount);
+                        inputContainer.SubtractItem(recipe.recipeItems[0].item, recipe.recipeItems[0].amount);
                         ResetProgress();
                     }
                 }
@@ -62,15 +58,15 @@ public class Manufacturer
         outputContainer.Reinit();
 
         progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();
-        inputContainer.savedSlots[0].ItemUpdate += () => UpdateSmeltingItems();
+        inputContainer.savedSlots[0].ItemUpdate += () => UpdateItems();
 
         float progressPercent = inputItem != null ? progress / requiredProgressTicks : 0;
         progressBar.UpdateProgressBar(progressPercent);
     }
 
-    public bool CanSmelt() {
-        return inputItem != null && (outputContainer.savedSlots[0].item == null || inputItem.GetRecipe(Recipe.RecipeType.Smelting).item == outputContainer.savedSlots[0].item);
-    }
+    /*public bool CanOperate() {
+        return inputItem != null && (outputContainer.savedSlots[0].item == null || inputItem.GetRecipe(this.mode).item == outputContainer.savedSlots[0].item);
+    }*/
 
     public void ResetProgress() {
         progress = 0;
@@ -79,7 +75,7 @@ public class Manufacturer
         }
     }
 
-    public void UpdateSmeltingItems() {
+    public void UpdateItems() {
         inputItem = inputContainer.savedSlots[0].item;
         if (inputItem != null && inputItem != currentInputItem) {
             ResetProgress();
@@ -96,8 +92,9 @@ public class Manufacturer
         this.isRunning = shouldRun;
 
     }
-
-    public void SetMode(Mode mode) {
+    
+    public void SetMode(Recipe.RecipeType mode) {
+        ResetProgress();
         this.mode = mode;
     }
 }
