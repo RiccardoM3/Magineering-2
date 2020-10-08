@@ -138,7 +138,8 @@ public class InventoryController : MonoBehaviour
         DestroyHotbar();
         _interface = Instantiate(interfaceObj);
         _interface.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        FreeCursorLockCamera();
+        GetComponentInChildren<MouseLookController>().FreeCursorLockCamera();
+        GetComponent<PlayerMovementController>().LockMovement();
         PreventHotbarScrolling();
         backgroundCover.SetActive(true);
         isActive = true;
@@ -155,7 +156,8 @@ public class InventoryController : MonoBehaviour
             Destroy(_interface);
             DestroyLabel();
             CreateHotbar();
-            LockCursorFreeCamera();
+            GetComponentInChildren<MouseLookController>().LockCursorFreeCamera();
+            GetComponent<PlayerMovementController>().FreeMovement();
             AllowHotbarScrolling();
             DestroyTemporaryHeldItem();
             UnsubscribeAll();
@@ -182,18 +184,6 @@ public class InventoryController : MonoBehaviour
     public void DestroyHotbar() {
         Destroy(_hotbar);
         _hotbar = null;
-    }
-
-    public void FreeCursorLockCamera() {
-        GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().mouseLook.lockCursor = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void LockCursorFreeCamera() {
-        GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().mouseLook.lockCursor = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public void SetTemporaryHeldItem(InventorySlot inventorySlot) {
