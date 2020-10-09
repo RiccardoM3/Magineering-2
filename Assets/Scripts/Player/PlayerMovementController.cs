@@ -14,6 +14,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private CharacterController controller;
     private Vector3 velocity;
+    private Vector3 inertia;
     private bool isGrounded;
     private bool movementLocked;
 
@@ -53,6 +54,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (!movementLocked && isGrounded && Input.GetButton("Jump")) {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            inertia = move;
         }
 
         velocity.y += gravity * Time.deltaTime;
