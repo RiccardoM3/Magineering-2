@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4644014221071828315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99.11084, y: 108.01179, z: 64.43762}
+  m_LocalPosition: {x: -85.49255, y: 114.90609, z: -119.444336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,4 +65,4 @@ MonoBehaviour:
     dropChance: 1
   maxHealth: 3
   minHealth: 2
-  treeId: 205
+  treeId: 168
