@@ -21,7 +21,7 @@ public class MyFuelFurnace : MyFurnace, IUsesFuelAddition
         base.Tick();
         this.fuelAddition.tick();
 
-        NewRecipe recipe = this.GetMatchingRecipe();
+        Recipe recipe = this.GetMatchingRecipe();
         if (this.fuelAddition.ShouldConsumeFuel() && recipe != null && this.outputs.CanFitItems(recipe.producedItems)) {
             this.fuelAddition.ConsumeFuel();
         }

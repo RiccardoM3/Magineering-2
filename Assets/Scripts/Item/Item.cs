@@ -7,12 +7,10 @@ public class Item : ScriptableObject
 {
     public string itemName = "New Item";
     public int stackAmount = 50;
-    public List<Recipe> recipes = new List<Recipe>();
     public Sprite icon = null;
-    //public List<Aspect> aspects = new List<Aspect>();         For future
     public List<SlotType> insertsInto = new List<SlotType>();
 
-    public Recipe GetRecipe(Recipe.RecipeType recipeType) {
+    /*public Recipe GetRecipe(Recipe.RecipeType recipeType) {
         for (int i = 0; i < this.recipes.Count; i++) {
             if (recipes[i].type == recipeType) {
                 return recipes[i];
@@ -20,7 +18,7 @@ public class Item : ScriptableObject
         }
 
         return null;
-    }
+    }*/
 
     public override bool Equals(object obj) {
         if (obj == null) return false;

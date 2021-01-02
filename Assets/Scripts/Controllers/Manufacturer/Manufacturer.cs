@@ -14,12 +14,12 @@ public class Manufacturer
     private Item currentInputItem;
     private float progress = 0;
     private bool isRunning = false;
-    private Recipe.RecipeType mode;
+    private Recipe.MachineType mode;
     private ManufacturerUIController manufacturerUI;
 
     public Manufacturer() {
 
-        SetMode(Recipe.RecipeType.PlateForming);
+        SetMode(Recipe.MachineType.Pressing);
 
         inputContainer = new Container(1, "Sections/MainSection/ManufacturerSection/InputSlotHolder");
         outputContainer = new Container(1, "Sections/MainSection/ManufacturerSection/OutputSlotHolder");
@@ -27,7 +27,8 @@ public class Manufacturer
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (inputItem != null && isRunning) {
 
-                Recipe recipe = inputItem.GetRecipe(this.mode);
+                //TODO needs to be redone
+                /*Recipe recipe = inputItem.GetRecipe(this.mode);
 
                 if (recipe != null && (recipe.item == outputContainer.savedSlots[0].item || outputContainer.savedSlots[0].item == null)) {
 
@@ -43,7 +44,7 @@ public class Manufacturer
                         inputContainer.SubtractItem(recipe.recipeItems[0].item, recipe.recipeItems[0].amount);
                         ResetProgress();
                     }
-                }
+                }*/
             }
         };
     }
@@ -87,7 +88,7 @@ public class Manufacturer
 
     }
     
-    public void SetMode(Recipe.RecipeType mode) {
+    public void SetMode(Recipe.MachineType mode) {
         ResetProgress();
         this.mode = mode;
     }

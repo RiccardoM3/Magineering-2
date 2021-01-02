@@ -36,7 +36,8 @@ public class Crusher {
     public void CrushTick() {
         if (crushingItem != null) {
 
-            Recipe crushingRecipe = crushingItem.GetRecipe(Recipe.RecipeType.Crushing);
+            //TODO needs to be redone
+            /*Recipe crushingRecipe = crushingItem.GetRecipe(Recipe.RecipeType.Crushing);
 
             progress += 1;
 
@@ -46,7 +47,7 @@ public class Crusher {
                 progress = 0;
             }
 
-            progressBar.setProgress(progress);
+            progressBar.setProgress(progress);*/
         }
     }
 

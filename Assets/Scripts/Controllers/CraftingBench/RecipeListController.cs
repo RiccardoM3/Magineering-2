@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class RecipeListController : MonoBehaviour
 {
-    public List<Recipe> unlockedRecipes = new List<Recipe>();
-
     public GameObject recipeListItemPrefab;
     public List<Recipe> recipeList = new List<Recipe>();
     public List<GameObject> recipeListItems = new List<GameObject>();
@@ -14,17 +12,13 @@ public class RecipeListController : MonoBehaviour
     public GameObject requiredItemsList;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         CreateRecipes();
         UpdateRequireditems();
     }
 
-
-    public void CreateRecipes()
-    {
-        foreach (Recipe recipe in recipeList)
-        {
+    public void CreateRecipes() {
+        foreach (Recipe recipe in recipeList) {
             GameObject recipeListItem = Instantiate(recipeListItemPrefab);
             recipeListItem.transform.SetParent(transform, false);
             recipeListItem.GetComponent<RecipeListItem>().LoadRecipe(recipe);
@@ -34,48 +28,38 @@ public class RecipeListController : MonoBehaviour
         selectedRecipe = recipeListItems[0];
     }
 
-    public void UpdateRequireditems()
-    {
-        if (selectedRecipe != null)
-        {
+    public void UpdateRequireditems() {
+        if (selectedRecipe != null) {
             DeleteRequiredItemsList();
             selectedRecipe.GetComponent<RecipeListItem>().LoadRequireditems(requiredItemsList);
         }
     }
 
-    public void DeleteRequiredItemsList()
-    {
-        foreach (Transform child in requiredItemsList.transform)
-        {
+    public void DeleteRequiredItemsList() {
+        foreach (Transform child in requiredItemsList.transform) {
             Destroy(child.gameObject);
         }
     }
 
-    public void SelectRecipe(GameObject recipeListItem)
-    {
+    public void SelectRecipe(GameObject recipeListItem) {
         selectedRecipe = recipeListItem;
         UpdateRequireditems();
     }
 
-    public void Craft()
-    {
+    public void Craft() {
         List<RequiredItemSlot> requiredItems = new List<RequiredItemSlot>(requiredItemsList.GetComponentsInChildren<RequiredItemSlot>());
         bool canCraft = true;
-        foreach (RequiredItemSlot requiredItemSlot in requiredItems)
-        {
-            if (!requiredItemSlot.HasEnoughItems())
-            {
+        foreach (RequiredItemSlot requiredItemSlot in requiredItems) {
+            if (!requiredItemSlot.HasEnoughItems()) {
                 canCraft = false;
             }
         }
 
-        if (canCraft)
-        {
+        if (canCraft) {
             Recipe recipe = selectedRecipe.GetComponent<RecipeListItem>().recipe;
-            InventoryController.instance.AddToInventory(recipe.item, recipe.amount);
+            InventoryController.instance.AddToInventory(recipe.producedItems[0].item, recipe.producedItems[0].amount);
 
-            foreach (RequiredItemSlot requiredItemSlot in requiredItems)
-            {
+            foreach (RequiredItemSlot requiredItemSlot in requiredItems) {
                 requiredItemSlot.SubtractRequiredAmount();
                 InventoryController.instance.SubtractFromInventory(requiredItemSlot.item, requiredItemSlot.requiredAmount);
             }

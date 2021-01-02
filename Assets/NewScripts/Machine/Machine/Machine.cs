@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public abstract class Machine : MonoBehaviour, IInteractable
 {
     [SerializeField] protected float speed = 1.0f;
-    [SerializeField] protected List<NewRecipe> recipes;
+    [SerializeField] protected List<Recipe> recipes;
     [SerializeField] private GameObject UIPrefab;
 
     protected MachineUIController UIController;
@@ -51,7 +51,7 @@ public abstract class Machine : MonoBehaviour, IInteractable
 
     //returns whether you can process or not this tick
     public virtual bool CanProcess() {
-        NewRecipe recipe = this.GetMatchingRecipe();
+        Recipe recipe = this.GetMatchingRecipe();
         if (recipe == null || !this.outputs.CanFitItems(recipe.producedItems)) {
             return false;
         }
@@ -64,7 +64,7 @@ public abstract class Machine : MonoBehaviour, IInteractable
 
     //processes inputs to outputs based on recipes
     public virtual void Process() {
-        NewRecipe recipe = this.GetMatchingRecipe();
+        Recipe recipe = this.GetMatchingRecipe();
         if (recipe != null) {
 
             foreach (NumberedItem requiredNumberedItem in recipe.requiredItems) {
@@ -104,9 +104,9 @@ public abstract class Machine : MonoBehaviour, IInteractable
         ConnectToUI();
     }
 
-    public NewRecipe GetMatchingRecipe() {
+    public Recipe GetMatchingRecipe() {
 
-        foreach (NewRecipe recipe in this.recipes) {
+        foreach (Recipe recipe in this.recipes) {
             if (recipe.CompareInputs(this.inputs.ToList())) {
                 return recipe;
             }

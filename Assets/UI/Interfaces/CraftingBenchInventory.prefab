@@ -2122,26 +2122,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141593d1826d43b4eb81685ab5aa721a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockedRecipes: []
   recipeListItemPrefab: {fileID: 7349520808946004769, guid: b28aca8ba15d1954b8ac39eee034f420,
     type: 3}
   recipeList:
-  - {fileID: 11400000, guid: f2e8ba6e09c9fc84ab1bebefc9fe1d9c, type: 2}
-  - {fileID: 11400000, guid: 4e25ab5f1fd034047af1f589339485d0, type: 2}
-  - {fileID: 11400000, guid: 6962493764708c5408577877ac22a404, type: 2}
-  - {fileID: 11400000, guid: dc548d16d0dfb614c99c5335eb310503, type: 2}
-  - {fileID: 11400000, guid: 2c69e38c95e70754498a67efdbd4e099, type: 2}
-  - {fileID: 11400000, guid: 1e62f1d2823ce004296ae109a799b861, type: 2}
-  - {fileID: 11400000, guid: e0db9721246590a4babcd934026e4c1a, type: 2}
-  - {fileID: 11400000, guid: c7602e66c691022449161d7123a455b1, type: 2}
-  - {fileID: 11400000, guid: 9bb57cf3acb744d419ae97a60a7dde0b, type: 2}
-  - {fileID: 11400000, guid: 204c34bcbc122134abbb36b1d48076e9, type: 2}
-  - {fileID: 11400000, guid: 049a580205aae4049839cfc130ee39bf, type: 2}
-  - {fileID: 11400000, guid: 44de146bbb9d5994c8dab275f2fb8948, type: 2}
-  - {fileID: 11400000, guid: d8c79206aaef6254fb9f36b108e086eb, type: 2}
-  - {fileID: 11400000, guid: 8df383eda1874df4ea70465797984110, type: 2}
-  - {fileID: 11400000, guid: fc0411cc821e37f44b4ad6c1571ec662, type: 2}
-  - {fileID: 11400000, guid: 5c052ee1595bebf4d9d43bc6b2604971, type: 2}
+  - {fileID: 11400000, guid: 57bf4b52ad406bf498322e2c91670465, type: 2}
+  - {fileID: 11400000, guid: 26e9036775da4b4448b9cff579700f39, type: 2}
+  - {fileID: 11400000, guid: df5d9195a63531d4ebc17691461deb8c, type: 2}
+  - {fileID: 11400000, guid: 0bd55d237b0d02948ba1584c67980d7d, type: 2}
+  - {fileID: 11400000, guid: 96ad087237250104f93fcee0f3909d54, type: 2}
+  - {fileID: 11400000, guid: d6370fc58cc0e444190edf1ff528f238, type: 2}
+  - {fileID: 11400000, guid: 3bdd1d226f6f6684b82c4de8ef42ef41, type: 2}
+  - {fileID: 11400000, guid: 6856dbb131972bd43848daa6accc398e, type: 2}
+  - {fileID: 11400000, guid: a957cdde77ab9514188a7ef875b1fb06, type: 2}
+  - {fileID: 11400000, guid: 0b2ae0eec93cb304e8dff12379f961f2, type: 2}
+  - {fileID: 11400000, guid: 1f3dd4a5d206d3d41a2c346d3e3c260d, type: 2}
+  - {fileID: 11400000, guid: a9cb78b57e071bc44b3dc88f8169fe10, type: 2}
+  - {fileID: 11400000, guid: 294fb7794c891bc41be82ad694ac3831, type: 2}
+  - {fileID: 11400000, guid: 4ffa582e71220bc4eb6bc85cf35e5aad, type: 2}
   recipeListItems: []
   selectedRecipe: {fileID: 0}
   requiredItemsList: {fileID: 1052296784727981457}

@@ -31,25 +31,23 @@ public class RecipeListItem : MonoBehaviour
         recipeListController.SelectRecipe(gameObject);
     }
 
-    public void LoadRecipe(Recipe loadedRecipe)
-    {
+    public void LoadRecipe(Recipe loadedRecipe) {
         this.recipe = loadedRecipe;
 
-        icon.sprite = loadedRecipe.item.icon;
-        nameText.SetText(loadedRecipe.item.itemName);
-        amountText.SetText("x" + loadedRecipe.amount.ToString());
+        icon.sprite = loadedRecipe.producedItems[0].item.icon;
+        nameText.SetText(loadedRecipe.producedItems[0].item.itemName);
+        amountText.SetText("x" + loadedRecipe.producedItems[0].amount.ToString());
     }
 
-    public void LoadRequireditems(GameObject requiredItemsList)
-    {
-        foreach (SavedSlot requireditem in recipe.recipeItems)
-        {
+    public void LoadRequireditems(GameObject requiredItemsList) {
+        foreach (NumberedItem requiredItem in recipe.requiredItems) {
+            SavedSlot tempRequiredItem = new SavedSlot(requiredItem.item, requiredItem.amount);
             GameObject requiredItemSlot = Instantiate(requiredItemPrefab);
             requiredItemSlot.transform.SetParent(requiredItemsList.transform);
-            requiredItemSlot.GetComponent<RequiredItemSlot>().SetItem(requireditem);
+            requiredItemSlot.GetComponent<RequiredItemSlot>().SetItem(tempRequiredItem);
 
-            int amountInInventory = InventoryController.instance.inventoryContainer.CountItems(requireditem.item);
-            int amountInHotbar = InventoryController.instance.hotbarContainer.CountItems(requireditem.item);
+            int amountInInventory = InventoryController.instance.inventoryContainer.CountItems(requiredItem.item);
+            int amountInHotbar = InventoryController.instance.hotbarContainer.CountItems(requiredItem.item);
 
             requiredItemSlot.GetComponent<RequiredItemSlot>().SetInputtedAmount(amountInInventory + amountInHotbar);
         }

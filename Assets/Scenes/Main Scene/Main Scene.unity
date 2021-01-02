@@ -6433,6 +6433,11 @@ PrefabInstance:
       propertyPath: debugItems.Array.data[14].amount
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[7].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 7aa7743675dab984f90ef70a7ae29843,
+        type: 2}
     - target: {fileID: 298217432723043225, guid: b808dfcd39759994e941b6c9673dbbff,
         type: 3}
       propertyPath: m_LocalPosition.x
