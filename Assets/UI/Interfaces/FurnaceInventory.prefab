@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1561280184}
   - component: {fileID: 1561280183}
   m_Layer: 5
-  m_Name: ActiveFire
+  m_Name: StatusFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,8 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3772203522902238710}
   - component: {fileID: 3772203522902238709}
-  - component: {fileID: 357504963498182465}
-  - component: {fileID: 14680034}
+  - component: {fileID: 9064274408973766727}
   m_Layer: 5
   m_Name: FurnaceInventory
   m_TagString: Untagged
@@ -529,7 +528,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3772203522902238711}
   m_CullTransparentMesh: 0
---- !u!114 &357504963498182465
+--- !u!114 &9064274408973766727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -538,26 +537,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3772203522902238711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0532e327ac663a546b3524525cbf5323, type: 3}
+  m_Script: {fileID: 11500000, guid: 17c883b8268c48241a11922de2efdbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePrefab: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
-  emptyFirePrefab: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d, type: 3}
-  fireSprite: {fileID: 1561280183}
-  burnTimer: {fileID: 5932601446941090114}
---- !u!114 &14680034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3772203522902238711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b86d464c3f77a04db55cbb9df57bac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  activeImage: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
+  inactiveImage: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d, type: 3}
+  statusImage: {fileID: 1561280183}
   progressBar: {fileID: 5874398427965058013}
+  burnTimer: {fileID: 5932601446941090114}
 --- !u!1 &3846295233463083987
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +690,7 @@ GameObject:
   - component: {fileID: 5112906892160897774}
   - component: {fileID: 5112906892160897775}
   m_Layer: 5
-  m_Name: FuelSlotHolder
+  m_Name: InputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +735,7 @@ GameObject:
   - component: {fileID: 5112906892326551544}
   - component: {fileID: 5112906892326551545}
   m_Layer: 5
-  m_Name: SmeltingItemSlotHolder
+  m_Name: InputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,7 +780,7 @@ GameObject:
   - component: {fileID: 5112906893194766910}
   - component: {fileID: 5112906893194766911}
   m_Layer: 5
-  m_Name: SmeltedItemSlotHolder
+  m_Name: OutputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1278,6 +1265,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 129e9cb5e9ba5d8489fce74523e3cbe1, type: 3}
+--- !u!224 &5874398427877956924 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6203301190580872979, guid: 129e9cb5e9ba5d8489fce74523e3cbe1,
+    type: 3}
+  m_PrefabInstance: {fileID: 545080346607352367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5874398427965058013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6203301190632706546, guid: 129e9cb5e9ba5d8489fce74523e3cbe1,
@@ -1290,12 +1283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &5874398427877956924 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6203301190580872979, guid: 129e9cb5e9ba5d8489fce74523e3cbe1,
-    type: 3}
-  m_PrefabInstance: {fileID: 545080346607352367}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &610322782838475816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3446,6 +3433,11 @@ PrefabInstance:
     - target: {fileID: 3895102967800290738, guid: b0845918914ec0a4098871ba7aa834ed,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231367124162846093, guid: b0845918914ec0a4098871ba7aa834ed,
+        type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

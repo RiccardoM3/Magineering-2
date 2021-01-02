@@ -116,6 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0532e327ac663a546b3524525cbf5323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeImage: {fileID: 0}
+  inactiveImage: {fileID: 0}
+  statusImage: {fileID: 0}
   firePrefab: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
   emptyFirePrefab: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d, type: 3}
   fireSprite: {fileID: 4487004531544121110}

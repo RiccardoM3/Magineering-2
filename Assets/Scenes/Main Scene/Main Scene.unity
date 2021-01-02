@@ -720,6 +720,7 @@ Transform:
   - {fileID: 713413393}
   - {fileID: 1296776855}
   - {fileID: 1348194248}
+  - {fileID: 857277045}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4421,6 +4422,36 @@ Transform:
   m_Father: {fileID: 2097293435}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &857277044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857277045}
+  m_Layer: 0
+  m_Name: Trees
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857277045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857277044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 136253858}
+  m_RootOrder: 47
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &866055151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6368,9 +6399,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
       propertyPath: backgroundCover
       value: 
       objectReference: {fileID: 1299501437}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[12].item
+      value: 
+      objectReference: {fileID: 11400000, guid: be1fcfeeb7b3fd74a8aacb1728d1f6d7,
+        type: 2}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[12].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[13].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ced9eda63dafa6408efd2019050230e,
+        type: 2}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[13].amount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[14].item
+      value: 
+      objectReference: {fileID: 11400000, guid: cce5152ba82a9fb4dbda623e4b0a90b6,
+        type: 2}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[14].amount
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 298217432723043225, guid: b808dfcd39759994e941b6c9673dbbff,
         type: 3}
       propertyPath: m_LocalPosition.x

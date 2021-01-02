@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestController : ManualMachine, IInteractable {
-    private Container chestContainer = new Container();
+    private Container chestContainer;
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        chestContainer.Init(30);
+        chestContainer = new Container(30, "Sections/MainSection/ChestStorageSection/ChestSlotHolder");
     }
 
     // Update is called once per frame
@@ -24,7 +24,6 @@ public class ChestController : ManualMachine, IInteractable {
 
     public void RightClickInteract() {
         ConnectToUI();
-        chestContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("ChestStorageSection").Find("ChestSlotHolder").gameObject;
         chestContainer.Reinit(chestContainer.savedSlots);
     }
 }

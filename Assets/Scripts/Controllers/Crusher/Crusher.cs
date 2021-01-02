@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Crusher {
     public CrusherUIController crusherUI;
-    public ProgressBar progressBar;
+    public Progress progressBar;
     public int requiredCrushTicks = 160;
 
-    private Container crushingContainer = new Container();
-    private Container crushedContainer = new Container();
+    private Container crushingContainer;
+    private Container crushedContainer;
     private Item crushingItem;
     private Item currentCrushingItem;
     private int progress = 0;
     private bool isRunning = false;
 
     public Crusher() {
-        crushingContainer.Init(1);
-        crushedContainer.Init(1);
+        crushingContainer = new Container(1, "Sections/MainSection/CrusherSection/CrushingItemSlotHolder");
+        crushedContainer = new Container(1, "Sections/MainSection/CrusherSection/CrushedItemSlotHolder");
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (isRunning) {
@@ -46,14 +46,14 @@ public class Crusher {
                 progress = 0;
             }
 
-            progressBar.UpdateProgressBar((float)progress / requiredCrushTicks);
+            progressBar.setProgress(progress);
         }
     }
 
     public void ResetProgress() {
         progress = 0;
         if (progressBar != null) {
-            progressBar.UpdateProgressBar(0);
+            progressBar.setProgress(0);
         }
     }
 
@@ -72,19 +72,17 @@ public class Crusher {
     }
 
     public void ConnectToUI() {
-        crushingContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("CrusherSection").Find("CrushingItemSlotHolder").gameObject;
         crushingContainer.Reinit();
-        crushedContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("CrusherSection").Find("CrushedItemSlotHolder").gameObject;
         crushedContainer.Reinit();
-        progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();
+        progressBar = InventoryController.instance._interface.GetComponent<Progress>();
 
         crushingContainer.savedSlots[0].ItemUpdate += () => UpdateItems();
 
         if (crushingItem != null) {
-            progressBar.UpdateProgressBar((float)progress / requiredCrushTicks);
+            progressBar.setProgress(progress);
         }
         else {
-            progressBar.UpdateProgressBar(0);
+            progressBar.setProgress(0);
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792849697692661685}
   - component: {fileID: 8484268380392242080}
-  - component: {fileID: -5240150638901868700}
+  - component: {fileID: 688005584296790622}
   m_Layer: 10
   m_Name: FurnaceBuilding
   m_TagString: Untagged
@@ -50,7 +50,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5240150638901868700
+--- !u!114 &688005584296790622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,9 +59,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 168991270270856278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643ee4cfb43a0054abd6d2d82e5f3b47, type: 3}
+  m_Script: {fileID: 11500000, guid: 00d983135030a5c44bf799ec01e45cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  recipes:
+  - {fileID: 11400000, guid: cb332eca4ddfd65459688e692d84cad7, type: 2}
+  - {fileID: 11400000, guid: 6ad5a4e558f5dfa4fa029c6210cc02d9, type: 2}
+  - {fileID: 11400000, guid: b124628b46b02ed42843b745ca589715, type: 2}
+  - {fileID: 11400000, guid: edcdcf20b2c6b9747a4564121092e963, type: 2}
+  - {fileID: 11400000, guid: cd1e3136384854e4eabd79a7744cc224, type: 2}
+  - {fileID: 11400000, guid: c0d9af2a4d32aea4b9f932115f8310dc, type: 2}
+  - {fileID: 11400000, guid: 6cc59dc6a404d244e969e681cd2cd6fc, type: 2}
+  - {fileID: 11400000, guid: 2f7519aa660153d42beb82a6faf5f64a, type: 2}
+  - {fileID: 11400000, guid: 85cc2b8518f6d36478a4471f11110074, type: 2}
+  - {fileID: 11400000, guid: 28b28e0cd7c71ee4088f94ce97fee22f, type: 2}
   UIPrefab: {fileID: 3772203522902238711, guid: c49a94c48b076fd4b86fa6db0a88efce,
     type: 3}
 --- !u!1 &4117762221028122983

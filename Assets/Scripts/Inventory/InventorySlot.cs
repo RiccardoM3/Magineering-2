@@ -148,6 +148,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         InventoryController.instance.DestroyLabel();
     }
+
+    public NumberedItem toNumberedItem() {
+        return new NumberedItem(this.item, this.amount);
+    }
 }
 public enum SlotType
 {

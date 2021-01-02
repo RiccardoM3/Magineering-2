@@ -8,14 +8,9 @@ public class CoalGeneratorController : FuelMachine, IInteractable {
 
     private float generatedPowerPerTick = 5f;
 
-    // Start is called before the first frame update
-    public override void Start()
-    {
-        base.Start();
-    }
 
     // Update is called once per frame
-    public override void Update()
+    /*public override void Update()
     {
         base.Update();
 
@@ -28,13 +23,13 @@ public class CoalGeneratorController : FuelMachine, IInteractable {
         } else {
             outputNode.GetComponent<WireNode>().powerContributionPerTick = 0;
         }
-    }
+    }*/
 
     public void LeftClickInteract() {
         
     }
 
     public void RightClickInteract() {
-        ConnectToUI();
+        //connectToUI();
     }
 }

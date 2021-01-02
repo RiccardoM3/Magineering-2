@@ -48,8 +48,8 @@ public class RecipeListItem : MonoBehaviour
             requiredItemSlot.transform.SetParent(requiredItemsList.transform);
             requiredItemSlot.GetComponent<RequiredItemSlot>().SetItem(requireditem);
 
-            int amountInInventory = InventoryController.instance.inventoryContainer.countItems(requireditem.item);
-            int amountInHotbar = InventoryController.instance.hotbarContainer.countItems(requireditem.item);
+            int amountInInventory = InventoryController.instance.inventoryContainer.CountItems(requireditem.item);
+            int amountInHotbar = InventoryController.instance.hotbarContainer.CountItems(requireditem.item);
 
             requiredItemSlot.GetComponent<RequiredItemSlot>().SetInputtedAmount(amountInInventory + amountInHotbar);
         }

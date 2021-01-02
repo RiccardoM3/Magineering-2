@@ -9,21 +9,20 @@ public class InventoryController : MonoBehaviour
     public delegate void OnItemUpdate();
     public event OnItemUpdate SaveContainers;
 
-    public GameObject _interface = null;
-    public GameObject _hotbar = null;
+    public GameObject _interface;
+    public GameObject _hotbar;
     public GameObject inventoryPrefab;
     public GameObject hotbarPrefab;
     public GameObject draggedItemPrefab;
     public GameObject labelPrefab;
     public GameObject menuPrefab;
     public GameObject backgroundCover;
-    public Container inventoryContainer = new Container();
-    public Container hotbarContainer = new Container();
+    public Container inventoryContainer;
+    public Container hotbarContainer;
     public bool isActive;
     public InventorySlot activeSlot;
-    public ActionController actionController = new ActionController();
 
-    public SavedSlot holdingItem = null;
+    public SavedSlot holdingItem;
     public GameObject draggedItem;
     public GameObject label;
 
@@ -67,8 +66,8 @@ public class InventoryController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventoryContainer.Init(30);
-        hotbarContainer.Init(10);
+        inventoryContainer = new Container(30, "Sections/ItemStorageSection/InventorySlotHolder");
+        hotbarContainer = new Container(10, "Sections/ItemStorageSection/HotbarSlotHolder");
         CreateHotbar();
         setActiveSlot(0);
         isActive = false;
@@ -117,9 +116,7 @@ public class InventoryController : MonoBehaviour
     public void OpenInventory()
     {
         OpenInterface(inventoryPrefab);
-        inventoryContainer.slotHolder = _interface.transform.Find("Sections").Find("ItemStorageSection").Find("InventorySlotHolder").gameObject;
         inventoryContainer.Reinit();
-        hotbarContainer.slotHolder = _interface.transform.Find("Sections").Find("ItemStorageSection").Find("HotbarSlotHolder").gameObject;
         hotbarContainer.Reinit();
     }
 
@@ -188,7 +185,7 @@ public class InventoryController : MonoBehaviour
 
     public void SetTemporaryHeldItem(InventorySlot inventorySlot) {
         holdingItem = new SavedSlot();
-        holdingItem.copyInventorySlot(inventorySlot);
+        holdingItem.CopyInventorySlot(inventorySlot);
 
         draggedItem = Instantiate(draggedItemPrefab);
         draggedItem.GetComponentInChildren<Image>().sprite = inventorySlot.icon.sprite;

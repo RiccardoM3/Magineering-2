@@ -35,6 +35,10 @@ public class Item : ScriptableObject
         return false;
     }
 
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
+
     public virtual void Use()
     {
         //This method is designed to be overwritten

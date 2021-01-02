@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FuelUIController : MonoBehaviour {
+public class FuelUIController : MachineUIController {
     public Sprite firePrefab;
     public Sprite emptyFirePrefab;
     public Image fireSprite;
@@ -23,10 +23,5 @@ public class FuelUIController : MonoBehaviour {
         fireSprite.color = new Color(0.4f, 0.4f, 0.4f);
     }
 
-    public void UpdateBurnTimer(float percent) {
-        if (percent >= 1) {
-            percent = 1;
-        }
-        burnTimer.value = percent * burnTimer.maxValue;
-    }
+    
 }

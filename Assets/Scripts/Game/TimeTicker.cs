@@ -11,6 +11,7 @@ public class TimeTicker : MonoBehaviour
 
     public static event EventHandler<OnTickEventArgs> OnTick;
     public static float lengthOfTick = 0.05f;
+    public static int ticksPerSecond = 20;
 
     private int tick;
     private float tickTimer;

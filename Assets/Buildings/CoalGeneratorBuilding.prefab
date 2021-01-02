@@ -278,7 +278,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3844803571957152551}
-  - component: {fileID: 6046242411632018828}
   - component: {fileID: 7001243751252465398}
   m_Layer: 10
   m_Name: Body
@@ -304,22 +303,6 @@ Transform:
   m_Father: {fileID: 749844866738764722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6046242411632018828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8250771896943067982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8edb4dba64ecc59418898c65cd074b0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIPrefab: {fileID: 728604330786997334, guid: 74d21dac0c31ddf42814d7e559f581ac, type: 3}
-  coalGeneratorInterfacePrefab: {fileID: 728604330786997334, guid: 74d21dac0c31ddf42814d7e559f581ac,
-    type: 3}
-  outputNode: {fileID: 8058949929801535722}
 --- !u!65 &7001243751252465398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -407,12 +390,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f092dc18da23aa84b84f1d78c5eba417, type: 3}
---- !u!1 &8058949929801535722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7616839482934996797, guid: f092dc18da23aa84b84f1d78c5eba417,
-    type: 3}
-  m_PrefabInstance: {fileID: 460307675003518935}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8058949929801535718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7616839482934996785, guid: f092dc18da23aa84b84f1d78c5eba417,

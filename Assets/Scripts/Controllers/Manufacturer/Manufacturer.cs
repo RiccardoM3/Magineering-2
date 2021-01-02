@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Manufacturer
 {
-    public Container inputContainer = new Container();
-    public Container outputContainer = new Container();
-    public ProgressBar progressBar;
+    public Container inputContainer;
+    public Container outputContainer;
+    public Progress progressBar;
     public int requiredProgressTicks = 160;
 
     private Item inputItem;
@@ -21,8 +21,8 @@ public class Manufacturer
 
         SetMode(Recipe.RecipeType.PlateForming);
 
-        inputContainer.Init(1);
-        outputContainer.Init(1);
+        inputContainer = new Container(1, "Sections/MainSection/ManufacturerSection/InputSlotHolder");
+        outputContainer = new Container(1, "Sections/MainSection/ManufacturerSection/OutputSlotHolder");
 
         TimeTicker.OnTick += delegate (object sender, TimeTicker.OnTickEventArgs e) {
             if (inputItem != null && isRunning) {
@@ -34,7 +34,7 @@ public class Manufacturer
                     progress += 1;
 
                     if (progressBar != null) {
-                        progressBar.UpdateProgressBar(progress / requiredProgressTicks);
+                        progressBar.setProgress(progress);
                     }
 
                     //if 100% complete
@@ -52,26 +52,20 @@ public class Manufacturer
         manufacturerUI = InventoryController.instance._interface.GetComponent<ManufacturerUIController>();
         manufacturerUI.linkedManufacturer = this;
 
-        inputContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("ManufacturerSection").Find("InputItemSlotHolder").gameObject;
         inputContainer.Reinit();
-        outputContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("MainSection").Find("ManufacturerSection").Find("OutputItemSlotHolder").gameObject;
         outputContainer.Reinit();
 
-        progressBar = InventoryController.instance._interface.GetComponent<ProgressBar>();
+        progressBar = InventoryController.instance._interface.GetComponent<Progress>();
         inputContainer.savedSlots[0].ItemUpdate += () => UpdateItems();
 
         float progressPercent = inputItem != null ? progress / requiredProgressTicks : 0;
-        progressBar.UpdateProgressBar(progressPercent);
+        progressBar.setProgress(inputItem != null ? progress: 0);
     }
-
-    /*public bool CanOperate() {
-        return inputItem != null && (outputContainer.savedSlots[0].item == null || inputItem.GetRecipe(this.mode).item == outputContainer.savedSlots[0].item);
-    }*/
 
     public void ResetProgress() {
         progress = 0;
         if (progressBar != null) {
-            progressBar.UpdateProgressBar(0);
+            progressBar.setProgress(0);
         }
     }
 

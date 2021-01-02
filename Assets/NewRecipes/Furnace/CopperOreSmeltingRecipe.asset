@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ad5e5695c4a114f858ecaccbffd522, type: 3}
+  m_Name: CopperOreSmeltingRecipe
+  m_EditorClassIdentifier: 
+  machineType: 0
+  requiredItems:
+  - item: {fileID: 11400000, guid: 36595b1b2611aad49a1a172d4aafb157, type: 2}
+    amount: 1
+  producedItems:
+  - item: {fileID: 11400000, guid: b073a2b4014c6ee47a30755fbbe8f68d, type: 2}
+    amount: 1
