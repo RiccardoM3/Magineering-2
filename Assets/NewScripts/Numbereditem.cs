@@ -13,6 +13,17 @@ public class NumberedItem {
         this.amount = amount;
     }
 
+    public void SetItems(Item newItem, int amt) {
+        if (amt == 0) {
+            this.item = null;
+            this.amount = 0;
+        }
+        else {
+            this.item = newItem;
+            this.amount = amt;
+        }
+    }
+
     public override bool Equals(object obj) {
 
         NumberedItem numberedItem = obj as NumberedItem;

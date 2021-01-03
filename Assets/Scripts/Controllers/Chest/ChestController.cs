@@ -24,6 +24,6 @@ public class ChestController : ManualMachine, IInteractable {
 
     public void RightClickInteract() {
         ConnectToUI();
-        chestContainer.Reinit(chestContainer.savedSlots);
+        chestContainer.Reinit(chestContainer.items);
     }
 }

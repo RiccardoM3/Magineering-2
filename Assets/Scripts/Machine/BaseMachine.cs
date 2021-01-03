@@ -13,8 +13,8 @@ public class BaseMachine {
     public void ConnectInventoryToUI(GameObject UIPrefab) {
         InventoryController.instance.OpenInterface(UIPrefab);
         InventoryController.instance.inventoryContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("ItemStorageSection").Find("InventorySlotHolder").gameObject;
-        InventoryController.instance.inventoryContainer.Reinit(InventoryController.instance.inventoryContainer.savedSlots);
+        InventoryController.instance.inventoryContainer.Reinit(InventoryController.instance.inventoryContainer.items);
         InventoryController.instance.hotbarContainer.slotHolder = InventoryController.instance._interface.transform.Find("Sections").Find("ItemStorageSection").Find("HotbarSlotHolder").gameObject;
-        InventoryController.instance.hotbarContainer.Reinit(InventoryController.instance.hotbarContainer.savedSlots);
+        InventoryController.instance.hotbarContainer.Reinit(InventoryController.instance.hotbarContainer.items);
     }
 }

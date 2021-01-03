@@ -57,7 +57,7 @@ public class Manufacturer
         outputContainer.Reinit();
 
         progressBar = InventoryController.instance._interface.GetComponent<Progress>();
-        inputContainer.savedSlots[0].ItemUpdate += () => UpdateItems();
+        inputContainer.OnItemChange += UpdateItems;
 
         float progressPercent = inputItem != null ? progress / requiredProgressTicks : 0;
         progressBar.setProgress(inputItem != null ? progress: 0);
@@ -71,7 +71,7 @@ public class Manufacturer
     }
 
     public void UpdateItems() {
-        inputItem = inputContainer.savedSlots[0].item;
+        inputItem = inputContainer.items[0].item;
         if (inputItem != null && inputItem != currentInputItem) {
             ResetProgress();
         }

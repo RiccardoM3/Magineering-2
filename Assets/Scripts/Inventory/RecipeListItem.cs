@@ -41,10 +41,9 @@ public class RecipeListItem : MonoBehaviour
 
     public void LoadRequireditems(GameObject requiredItemsList) {
         foreach (NumberedItem requiredItem in recipe.requiredItems) {
-            SavedSlot tempRequiredItem = new SavedSlot(requiredItem.item, requiredItem.amount);
             GameObject requiredItemSlot = Instantiate(requiredItemPrefab);
             requiredItemSlot.transform.SetParent(requiredItemsList.transform);
-            requiredItemSlot.GetComponent<RequiredItemSlot>().SetItem(tempRequiredItem);
+            requiredItemSlot.GetComponent<RequiredItemSlot>().SetItem(requiredItem);
 
             int amountInInventory = InventoryController.instance.inventoryContainer.CountItems(requiredItem.item);
             int amountInHotbar = InventoryController.instance.hotbarContainer.CountItems(requiredItem.item);

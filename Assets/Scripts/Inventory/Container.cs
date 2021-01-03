@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Container {
+
+    public delegate void OnItemChangeEvent();
+    public event OnItemChangeEvent OnItemChange;
+
     public GameObject slotHolder;
     public InventorySlot[] slots;
-    public SavedSlot[] savedSlots;
+    public NumberedItem[] items;
 
     private string slotHolderPath;
     private int maxSpace;
@@ -14,25 +18,41 @@ public class Container {
 
         this.slotHolderPath = slotHolderPath;
         this.maxSpace = space;
-        this.savedSlots = new SavedSlot[maxSpace];
+        this.items = new NumberedItem[maxSpace];
 
         for (int i = 0; i < space; i++) {
-            this.savedSlots[i] = new SavedSlot();
+            this.items[i] = new NumberedItem(null, 0);
         }
     }
 
     //Call after GUI has been destroyed and recreated
-    public void Reinit(SavedSlot[] loadContainer = null) {
+    public void Reinit(NumberedItem[] loadContainer = null) {
 
         this.FindAndSetSlotHolder();
 
         if (loadContainer != null) {
-            this.savedSlots = loadContainer;
+            this.items = loadContainer;
         }
 
         this.slots = slotHolder.GetComponentsInChildren<InventorySlot>();
-        InventoryController.instance.SaveContainers += SaveItems;
+        foreach (InventorySlot inventorySlot in this.slots) {
+            inventorySlot.container = this;
+        }
+
+        this.OnItemChange += SaveItems;
         UpdateGUI();
+    }
+
+    public void InvokeOnItemChange() {
+        this.OnItemChange?.Invoke();
+    }
+
+    public void UnsubscribeToEvents() {
+        if (this.OnItemChange != null) {
+            foreach (var method in this.OnItemChange.GetInvocationList()) {
+                this.OnItemChange -= (method as OnItemChangeEvent);
+            }
+        }
     }
 
     public void FindAndSetSlotHolder() {
@@ -51,16 +71,16 @@ public class Container {
         //Loop through each item slot that already has the item in it
         while (index >= 0 && remaining > 0)
         {
-            int amountInSlot = savedSlots[index].amount;
+            int amountInSlot = items[index].amount;
 
             //If adding the item would overflow it, max out the stack and subtract from remaining
             if (amountInSlot + remaining > item.stackAmount) {
-                savedSlots[index].amount = item.stackAmount;
+                items[index].amount = item.stackAmount;
                 remaining -= item.stackAmount - amountInSlot;
             }
             //If it wouldn't oveflow it, add the remaining items and set remaining to zero
             else {
-                savedSlots[index].amount += remaining;
+                items[index].amount += remaining;
                 remaining = 0;
             }
 
@@ -72,12 +92,12 @@ public class Container {
         while (index >= 0  && remaining > 0) {
             //If the item would overflow the slot, max it and subtract from remaining
             if (remaining > item.stackAmount) {
-                savedSlots[index].SetItem(item, item.stackAmount);
+                items[index].SetItems(item, item.stackAmount);
                 remaining -= item.stackAmount;
             }
             //If the item fits, set the amount and set remaining to zero
             else {
-                savedSlots[index].SetItem(item, remaining);
+                items[index].SetItems(item, remaining);
                 remaining = 0;
             }
 
@@ -94,7 +114,7 @@ public class Container {
 
         //Loop through every slot which has the item
         while (index >= 0 && remaining > 0) {
-            int slotAmount = savedSlots[index].amount;
+            int slotAmount = items[index].amount;
 
             //subtract from every slot until remaining is 0
             if (remaining <= slotAmount) {
@@ -105,7 +125,7 @@ public class Container {
                 slotAmount = 0;
             }
 
-            savedSlots[index].SetItem(item, slotAmount);
+            items[index].SetItems(item, slotAmount);
 
 
             index = SearchForItem(item, index);
@@ -116,8 +136,8 @@ public class Container {
     }
 
     private int SearchForItem(Item item = null, int startFrom = 0) {
-        for (int i = startFrom; i < savedSlots.Length; i++) {
-            if (savedSlots[i].item == item) {
+        for (int i = startFrom; i < items.Length; i++) {
+            if (items[i].item == item) {
                 return i;
             }
         }
@@ -126,8 +146,8 @@ public class Container {
     }
 
     private int SearchForSlotWithSpace(Item item, int amount) {
-        for (int i = 0; i < savedSlots.Length; i++) {
-            if (savedSlots[i].item == item && savedSlots[i].amount < item.stackAmount) {
+        for (int i = 0; i < items.Length; i++) {
+            if (items[i].item == item && items[i].amount < item.stackAmount) {
                 return i;
             }
         }
@@ -138,9 +158,9 @@ public class Container {
     public int CountItems(Item item = null) {
         int total = 0;
 
-        for (int i = 0; i < savedSlots.Length; i++) {
-            if (item == null || savedSlots[i].item == item) {
-                total += savedSlots[i].amount;
+        for (int i = 0; i < items.Length; i++) {
+            if (item == null || items[i].item == item) {
+                total += items[i].amount;
             }
         }
 
@@ -149,8 +169,8 @@ public class Container {
 
     public void UpdateGUI() {
         if (slotHolder != null) {
-            for (int i = 0; i < savedSlots.Length; i++) {
-                slots[i].SetItem(savedSlots[i].item, savedSlots[i].amount);
+            for (int i = 0; i < items.Length; i++) {
+                slots[i].SetItem(items[i].item, items[i].amount);
             }
         }
     }
@@ -158,15 +178,15 @@ public class Container {
     public void SaveItems() {
         if (slotHolder != null) {
             for (int i = 0; i < slots.Length; i++) {
-                savedSlots[i].CopyInventorySlot(slots[i]);
+                items[i] = slots[i].ToNumberedItem();
             }
         }
     }
 
     public List<NumberedItem> ToList() {
         List<NumberedItem> newList = new List<NumberedItem>();
-        foreach (SavedSlot savedSlot in this.savedSlots) {
-            newList.Add(new NumberedItem(savedSlot.item, savedSlot.amount));
+        foreach (NumberedItem numberedItem in this.items) {
+            newList.Add(new NumberedItem(numberedItem.item, numberedItem.amount));
         }
         return newList;
     }
@@ -176,8 +196,8 @@ public class Container {
 
         //clone the container
         Container clonedContainer = new Container(this.maxSpace);
-        for (int i = 0; i < this.savedSlots.Length; i++) {
-            clonedContainer.savedSlots[i] = new SavedSlot(this.savedSlots[i].item, this.savedSlots[i].amount);
+        for (int i = 0; i < this.items.Length; i++) {
+            clonedContainer.items[i] = new NumberedItem(this.items[i].item, this.items[i].amount);
         }
 
         //see if you can successfully add each item
@@ -188,54 +208,5 @@ public class Container {
         }
         
         return true;
-    }
-}
-
-[Serializable]
-public class SavedSlot
-{
-    public Item item;
-    public int amount;
-
-    public delegate void OnItemUpdate();
-    public event OnItemUpdate ItemUpdate;
-
-    public SavedSlot() {
-
-    }
-
-    public SavedSlot(Item item, int amount) {
-        this.item = item;
-        this.amount = amount;
-    }
-
-    public void InvokeItemUpdate() {
-        ItemUpdate?.Invoke();
-    }
-
-    public void UnsubscribeAll() {
-        if (ItemUpdate != null)
-            foreach (var method in ItemUpdate.GetInvocationList())
-                ItemUpdate -= (method as OnItemUpdate);
-    }
-
-    public void CopyInventorySlot(InventorySlot slot)
-    {
-        this.item = slot.item;
-        this.amount = slot.amount;
-
-        InvokeItemUpdate();
-    }
-    public void SetItem(Item newItem, int amt)
-    {
-        if (amt == 0) {
-            this.item = null;
-            this.amount = 0;
-        } else {
-            this.item = newItem;
-            this.amount = amt;
-        }
-
-        InvokeItemUpdate();
     }
 }

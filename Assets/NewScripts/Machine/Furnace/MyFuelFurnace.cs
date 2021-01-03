@@ -65,7 +65,7 @@ public class FuelAddition : IMachineAddition {
         this.UIController = UIController as FuelFurnaceUIController;
 
         fuelContainer.Reinit();
-        fuelContainer.savedSlots[0].ItemUpdate += () => UpdateFuelItems();
+        fuelContainer.OnItemChange += UpdateFuelItems;
 
         this.burnTimer.SetProgressSlider(this.UIController.getBurnSlider());
         this.burnTimer.setProgress(remainingBurnTicks);
@@ -86,7 +86,7 @@ public class FuelAddition : IMachineAddition {
     }
 
     public void UpdateFuelItems() {
-        fuelItem = fuelContainer.savedSlots[0].item as FuelItem;
+        fuelItem = fuelContainer.items[0].item as FuelItem;
 
         if (this.UIController != null) {
             this.burnTimer.setRequiredProgress(currentFuelItem != null ? currentFuelItem.burnTicks : 0);

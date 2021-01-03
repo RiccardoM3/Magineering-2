@@ -14,13 +14,13 @@ public class RequiredItemSlot : MonoBehaviour
     public int requiredAmount;
     public Item item;
 
-    public void SetItem(SavedSlot savedSlot)
+    public void SetItem(NumberedItem numbereditem)
     {
-        item = savedSlot.item;
-        itemName.SetText(savedSlot.item.itemName);
-        requiredAmount = savedSlot.amount;
+        item = numbereditem.item;
+        itemName.SetText(numbereditem.item.itemName);
+        requiredAmount = numbereditem.amount;
         this.SetAmount(inputtedAmount);
-        icon.sprite = savedSlot.item.icon;
+        icon.sprite = numbereditem.item.icon;
     }
 
     public void SetInputtedAmount(int amnt)

@@ -26,7 +26,7 @@ public class Crusher {
     }
 
     public void UpdateItems() {
-        crushingItem = crushingContainer.savedSlots[0].item;
+        crushingItem = crushingContainer.items[0].item;
         if (crushingItem == null || currentCrushingItem != crushingItem) {
             ResetProgress();
         }
@@ -77,7 +77,7 @@ public class Crusher {
         crushedContainer.Reinit();
         progressBar = InventoryController.instance._interface.GetComponent<Progress>();
 
-        crushingContainer.savedSlots[0].ItemUpdate += () => UpdateItems();
+        crushingContainer.OnItemChange += UpdateItems;
 
         if (crushingItem != null) {
             progressBar.setProgress(progress);

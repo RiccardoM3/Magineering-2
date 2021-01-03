@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
-    public delegate void OnItemUpdate();
-    public event OnItemUpdate SaveContainers;
-
     public GameObject _interface;
     public GameObject _hotbar;
     public GameObject inventoryPrefab;
@@ -22,14 +19,14 @@ public class InventoryController : MonoBehaviour
     public bool isActive;
     public InventorySlot activeSlot;
 
-    public SavedSlot holdingItem;
+    public NumberedItem holdingItem;
     public GameObject draggedItem;
     public GameObject label;
 
     private bool allowHotbarScrolling;
     private int activeSlotIndex = 0;
 
-    public List<SavedSlot> debugItems;
+    public List<NumberedItem> debugItems;
 
     private KeyCode[] hotbarKeyCodes = {
          KeyCode.Alpha1,
@@ -57,11 +54,6 @@ public class InventoryController : MonoBehaviour
         instance = this;
     }
     #endregion
-    
-    public void InvokeItemUpdate()
-    {
-        SaveContainers?.Invoke();
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -157,25 +149,16 @@ public class InventoryController : MonoBehaviour
             GetComponent<PlayerMovementController>().FreeMovement();
             AllowHotbarScrolling();
             DestroyTemporaryHeldItem();
-            UnsubscribeAll();
             backgroundCover.SetActive(false);
             setActiveSlot(activeSlotIndex);
         }
         isActive = false;
     }
 
-    public void UnsubscribeAll() {
-        if (SaveContainers != null) {
-            foreach (var method in SaveContainers.GetInvocationList()) {
-                SaveContainers -= (method as OnItemUpdate);
-            }
-        }
-    }
-
     public void CreateHotbar() {
          _hotbar = Instantiate(hotbarPrefab, GameObject.Find("Canvas").transform);
         hotbarContainer.slotHolder = _hotbar.transform.GetChild(0).gameObject;
-        hotbarContainer.Reinit(hotbarContainer.savedSlots);
+        hotbarContainer.Reinit(hotbarContainer.items);
     }
 
     public void DestroyHotbar() {
@@ -184,8 +167,7 @@ public class InventoryController : MonoBehaviour
     }
 
     public void SetTemporaryHeldItem(InventorySlot inventorySlot) {
-        holdingItem = new SavedSlot();
-        holdingItem.CopyInventorySlot(inventorySlot);
+        holdingItem = inventorySlot.ToNumberedItem();
 
         draggedItem = Instantiate(draggedItemPrefab);
         draggedItem.GetComponentInChildren<Image>().sprite = inventorySlot.icon.sprite;

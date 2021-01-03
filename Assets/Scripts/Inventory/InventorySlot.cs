@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public Container container;
     public Item item;
     public Image icon;
     public Sprite defaultIcon = null;
@@ -81,7 +82,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //change background colour
         backgroundImage.color = emptyColor;
 
-        InventoryController.instance.InvokeItemUpdate();
+        this.container.InvokeOnItemChange();
     }
 
     public void SetAmount(int amt)
@@ -89,12 +90,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         amount = amt;
         amountText.text = amt > 0 ? amt.ToString() : "" ;
 
-        InventoryController.instance.InvokeItemUpdate();
+        this.container.InvokeOnItemChange();
     }
 
     public void PlaceItem(PointerEventData eventData)
     {
-        SavedSlot holdingItem = InventoryController.instance.holdingItem;
+        NumberedItem holdingItem = InventoryController.instance.holdingItem;
 
         if (eventData.pointerPress.tag != "InventorySlot" || !holdingItem.item.insertsInto.Contains(this.slotType)) {
             return;
@@ -127,14 +128,18 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //If they are different items, swap them
         else
         {
-            SavedSlot temp = InventoryController.instance.holdingItem;
+            NumberedItem temp = InventoryController.instance.holdingItem;
             InventoryController.instance.DestroyTemporaryHeldItem();
             InventoryController.instance.SetTemporaryHeldItem(this);
             this.SetItem(temp.item, temp.amount);
         }
 
-       InventoryController.instance.InvokeItemUpdate();
+       this.container.InvokeOnItemChange();
         
+    }
+
+    public NumberedItem ToNumberedItem() {
+        return new NumberedItem(this.item, this.amount);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -147,10 +152,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         InventoryController.instance.DestroyLabel();
-    }
-
-    public NumberedItem toNumberedItem() {
-        return new NumberedItem(this.item, this.amount);
     }
 }
 public enum SlotType

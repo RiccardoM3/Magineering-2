@@ -341,7 +341,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
 --- !u!114 &1857740635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +369,6 @@ MonoBehaviour:
   backgroundCover: {fileID: 0}
   isActive: 0
   activeSlot: {fileID: 0}
-  actionController: {fileID: 0}
   holdingItem:
     item: {fileID: 0}
     amount: 0
@@ -390,7 +389,7 @@ MonoBehaviour:
     amount: 10
   - item: {fileID: 11400000, guid: 24f54ec7e99843442ae6af8a8d69b09b, type: 2}
     amount: 15
-  - item: {fileID: 11400000, guid: e23ea357f7455e547a8e187e98d62643, type: 2}
+  - item: {fileID: 11400000, guid: 7aa7743675dab984f90ef70a7ae29843, type: 2}
     amount: 15
   - item: {fileID: 11400000, guid: a88d736f483757347a4c2eefae367dfa, type: 2}
     amount: 2
@@ -399,6 +398,12 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: f8f4a9ee9d8e88742b3ce98c5dca3953, type: 2}
     amount: 12
   - item: {fileID: 11400000, guid: 9d9a29fd235d8b041a8a9fa477a5c082, type: 2}
+    amount: 12
+  - item: {fileID: 11400000, guid: be1fcfeeb7b3fd74a8aacb1728d1f6d7, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 2ced9eda63dafa6408efd2019050230e, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: cce5152ba82a9fb4dbda623e4b0a90b6, type: 2}
     amount: 12
 --- !u!114 &1857740636
 MonoBehaviour:
