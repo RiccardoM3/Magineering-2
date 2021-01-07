@@ -2,51 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyFuelFurnace : MyFurnace, IUsesFuelAddition
-{
-    private FuelAddition fuelAddition;
-
-    public override void Init() {
-        base.Init();
-
-        this.fuelAddition = new FuelAddition();
-    }
-
-    public override void OnUpdate() {
-        base.OnUpdate();
-        this.fuelAddition.update();
-    }
-
-    public override void Tick() {
-        base.Tick();
-        this.fuelAddition.tick();
-
-        Recipe recipe = this.GetMatchingRecipe();
-        if (this.fuelAddition.ShouldConsumeFuel() && recipe != null && this.outputs.CanFitItems(recipe.producedItems)) {
-            this.fuelAddition.ConsumeFuel();
-        }
-    }
-
-    public override bool CanProcess() {
-        return this.fuelAddition.HasActiveFuel() && base.CanProcess();
-    }
-
-    public override void ConnectMachineToUI() {
-        base.ConnectMachineToUI();
-        this.fuelAddition.connectToUI(this.UIController);
-        
-    }
-
-    public override bool IsActive() {
-        return this.fuelAddition.HasActiveFuel();
-    }
-
-    public FuelAddition getFuelAddition() {
-        return this.fuelAddition;
-    }
-}
-
-public class FuelAddition : IMachineAddition {
+public class FuelComponent : IMachineComponent {
 
     private Container fuelContainer;
     private FuelFurnaceUIController UIController;
@@ -55,7 +11,7 @@ public class FuelAddition : IMachineAddition {
     private FuelItem currentFuelItem;
     private Progress burnTimer;
 
-    public FuelAddition() {
+    public FuelComponent() {
         this.fuelContainer = new Container(1, "Sections/MainSection/FuelSection/InputSlotHolder");
         this.burnTimer = new Progress();
         this.burnTimer.setRequiredProgress(currentFuelItem != null ? currentFuelItem.burnTicks : 0);
@@ -106,12 +62,6 @@ public class FuelAddition : IMachineAddition {
     }
 }
 
-interface IMachineAddition {
-    void connectToUI(MachineUIController UIController);
-    void tick();
-    void update();
-}
-
-interface IUsesFuelAddition {
-    FuelAddition getFuelAddition();
+interface IUsesFuelComponent {
+    FuelComponent getFuelAddition();
 }

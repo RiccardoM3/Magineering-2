@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MyFurnace : Machine {
+public abstract class Furnace : Machine {
 
     protected Progress progress;
 
