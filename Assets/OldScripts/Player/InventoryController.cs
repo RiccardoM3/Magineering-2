@@ -157,8 +157,7 @@ public class InventoryController : MonoBehaviour
 
     public void CreateHotbar() {
          _hotbar = Instantiate(hotbarPrefab, GameObject.Find("Canvas").transform);
-        hotbarContainer.slotHolder = _hotbar.transform.GetChild(0).gameObject;
-        hotbarContainer.Reinit(hotbarContainer.items);
+        hotbarContainer.Reinit(hotbarContainer.items, _hotbar.transform.GetChild(0).gameObject);
     }
 
     public void DestroyHotbar() {

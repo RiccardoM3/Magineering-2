@@ -26,15 +26,19 @@ public class Container {
     }
 
     //Call after GUI has been destroyed and recreated
-    public void Reinit(NumberedItem[] loadContainer = null) {
+    public void Reinit(NumberedItem[] loadContainer = null, GameObject overridingSlotHolder = null) {
 
-        this.FindAndSetSlotHolder();
+        if (overridingSlotHolder != null) {
+            this.slotHolder = overridingSlotHolder;
+        } else {
+            this.FindAndSetSlotHolder();
+        }
 
         if (loadContainer != null) {
             this.items = loadContainer;
         }
 
-        this.slots = slotHolder.GetComponentsInChildren<InventorySlot>();
+        this.slots = this.slotHolder.GetComponentsInChildren<InventorySlot>();
         foreach (InventorySlot inventorySlot in this.slots) {
             inventorySlot.container = this;
         }
