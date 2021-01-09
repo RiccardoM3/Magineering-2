@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AxeController : MonoBehaviour
+public class Axe : MonoBehaviour
 {
     // Terrains, Hit
     private Terrain terrain;            // Derived from hit...GetComponent<Terrain>

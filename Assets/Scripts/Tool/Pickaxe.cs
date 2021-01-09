@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PickaxeController : MonoBehaviour
+public class Pickaxe : MonoBehaviour
 {
     private RaycastHit hit; 
     private Animator animator;

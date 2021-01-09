@@ -34,7 +34,6 @@ public class FuelFurnace : Furnace, IUsesFuelComponent
     public override void ConnectMachineToUI() {
         base.ConnectMachineToUI();
         this.fuelAddition.connectToUI(this.UIController);
-        
     }
 
     public override bool IsActive() {
