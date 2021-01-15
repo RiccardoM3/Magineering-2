@@ -5,13 +5,13 @@ using UnityEngine;
 public class ElectricManufacturer : ElectricMachine, IInteractable
 {
     public Manufacturer manufacturer = new Manufacturer();
-    public override void Start() {
-        base.Start();
+    public void Start() {
+        //base.Start();
     }
 
-    public override void Update() {
-        base.Update();
-        manufacturer.DoUpdate(machine.IsEnabled() && HasEnoughPower());
+    public void Update() {
+        //base.Update();
+        //manufacturer.DoUpdate(machine.IsEnabled() && HasEnoughPower());
     }
 
     public void LeftClickInteract() {
@@ -19,7 +19,7 @@ public class ElectricManufacturer : ElectricMachine, IInteractable
     }
 
     public void RightClickInteract() {
-        base.ConnectToUI();
-        manufacturer.ConnectToUI();
+        //base.ConnectToUI();
+        //manufacturer.ConnectToUI();
     }
 }

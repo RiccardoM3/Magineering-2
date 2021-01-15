@@ -91,9 +91,14 @@ public abstract class Machine : MonoBehaviour, IInteractable
 
         this.UIController = InventoryController.instance._interface.transform.GetComponentInChildren<MachineUIController>();
 
-        //To handle multiple inputs/outputs, child all InventorySlots to the slotHolder, and order them by heirarchy
-        inputs.Reinit();
-        outputs.Reinit();
+        //Note: To handle multiple inputs/outputs, child all InventorySlots to the slotHolder, and order them by heirarchy
+        if (this.inputs != null) {
+            inputs.Reinit();
+        }
+        
+        if (this.outputs != null) {
+            outputs.Reinit();
+        }
     }
 
     public void LeftClickInteract() {

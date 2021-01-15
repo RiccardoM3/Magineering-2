@@ -4,6 +4,6 @@ using UnityEngine;
 
 interface IMachineComponent {
     void connectToUI(MachineUIController UIController);
-    void tick();
-    void update();
+    void Tick();
+    void OnUpdate();
 }

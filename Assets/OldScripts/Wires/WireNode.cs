@@ -8,7 +8,7 @@ public class WireNode : MonoBehaviour
     public List<WireNode> connectedNodes = new List<WireNode>();
     public WireSystem attachedWireSystem;
     public float powerContributionPerTick = 0;
-    public ElectricMachine attachedMachine;
+    public ElectricityComponent attachedMachine;
 
     // Start is called before the first frame update
     void Start()

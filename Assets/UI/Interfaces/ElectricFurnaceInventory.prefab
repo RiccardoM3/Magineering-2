@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230099542484864864}
   - component: {fileID: 230099542484864867}
-  - component: {fileID: 3992710789213415532}
-  - component: {fileID: 1906225861410728005}
+  - component: {fileID: 2705006659205492534}
   m_Layer: 5
   m_Name: ElectricFurnaceInventory
   m_TagString: Untagged
@@ -48,7 +47,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230099542484864865}
   m_CullTransparentMesh: 0
---- !u!114 &3992710789213415532
+--- !u!114 &2705006659205492534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,26 +56,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 230099542484864865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b86d464c3f77a04db55cbb9df57bac1, type: 3}
+  m_Script: {fileID: 11500000, guid: 194bbf7b4d89ca04a86b971a8e5de0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeImage: {fileID: 21300000, guid: bd9a4eb303e29b741805f97207dc0eb8, type: 3}
+  inactiveImage: {fileID: 21300000, guid: 3063124dafe170d44bcc33b728961ca6, type: 3}
+  statusImage: {fileID: 3992710789094298657}
   progressBar: {fileID: 52043669604288351}
---- !u!114 &1906225861410728005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230099542484864865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5d335b8e676f74a9ac96cccfa6dd24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  electricityPrefab: {fileID: 21300000, guid: bd9a4eb303e29b741805f97207dc0eb8, type: 3}
-  emptyElectricityPrefab: {fileID: 21300000, guid: 3063124dafe170d44bcc33b728961ca6,
-    type: 3}
-  electricitySprite: {fileID: 3992710789094298657}
 --- !u!1 &1117839590997106402
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +237,7 @@ GameObject:
   - component: {fileID: 6249397376131115669}
   - component: {fileID: 5411717582194335715}
   m_Layer: 5
-  m_Name: SmeltingItemSlotHolder
+  m_Name: InputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +685,7 @@ GameObject:
   - component: {fileID: 3992710789094298670}
   - component: {fileID: 3992710789094298657}
   m_Layer: 5
-  m_Name: ActiveFire
+  m_Name: ActiveElectricity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,7 +852,7 @@ GameObject:
   - component: {fileID: 1666790691708270221}
   - component: {fileID: 1375244605082754035}
   m_Layer: 5
-  m_Name: SmeltedItemSlotHolder
+  m_Name: OutputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

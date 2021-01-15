@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 728604330786997335}
   - component: {fileID: 728604330786997332}
-  - component: {fileID: 4564468477917552512}
+  - component: {fileID: 1210377377098686506}
   m_Layer: 5
   m_Name: CoalGeneratorInventory
   m_TagString: Untagged
@@ -104,7 +104,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728604330786997334}
   m_CullTransparentMesh: 0
---- !u!114 &4564468477917552512
+--- !u!114 &1210377377098686506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,15 +113,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 728604330786997334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0532e327ac663a546b3524525cbf5323, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b1c890711f66dc4381f7a57cae6b8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeImage: {fileID: 0}
-  inactiveImage: {fileID: 0}
-  statusImage: {fileID: 0}
-  firePrefab: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
-  emptyFirePrefab: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d, type: 3}
-  fireSprite: {fileID: 4487004531544121110}
+  activeImage: {fileID: 21300000, guid: d1f2c961ed562cc4cbb1abe5d1a4c053, type: 3}
+  inactiveImage: {fileID: 21300000, guid: 808f1dbcda1f3ed4392d113ef66dfa8d, type: 3}
+  statusImage: {fileID: 4487004531544121110}
   burnTimer: {fileID: 7231367124525183516}
 --- !u!1 &1358587642367263146
 GameObject:
@@ -830,7 +827,7 @@ GameObject:
   - component: {fileID: 8696938392823001935}
   - component: {fileID: 8696938392823001934}
   m_Layer: 5
-  m_Name: FuelSlotHolder
+  m_Name: InputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

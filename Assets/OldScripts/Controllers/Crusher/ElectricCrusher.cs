@@ -5,15 +5,15 @@ using UnityEngine;
 public class ElectricCrusher : ElectricMachine, IInteractable {
     public Crusher crusher = new Crusher();
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
+        //base.Start();
     }
 
-    public override void Update()
+    public void Update()
     {
-        base.Update();
-        crusher.DoUpdate(machine.IsEnabled() && HasEnoughPower());
+        //base.Update();
+        //crusher.DoUpdate(machine.IsEnabled() && HasEnoughPower());
     }
 
     public void LeftClickInteract() {
@@ -21,7 +21,7 @@ public class ElectricCrusher : ElectricMachine, IInteractable {
     }
 
     public void RightClickInteract() {
-        base.ConnectToUI();
-        crusher.ConnectToUI();
+        //base.ConnectToUI();
+        //crusher.ConnectToUI();
     }
 }

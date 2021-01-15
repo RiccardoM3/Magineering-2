@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FuelComponent : IMachineComponent {
 
     private Container fuelContainer;
-    private FuelFurnaceUIController UIController;
+    private IUsesFuelComponentUI UIController;
     private int remainingBurnTicks;
     private FuelItem fuelItem;
     private FuelItem currentFuelItem;
@@ -18,12 +19,12 @@ public class FuelComponent : IMachineComponent {
     }
 
     public void connectToUI(MachineUIController UIController) {
-        this.UIController = UIController as FuelFurnaceUIController;
+        this.UIController = UIController as IUsesFuelComponentUI;
 
         fuelContainer.Reinit();
         fuelContainer.OnItemChange += UpdateFuelItems;
 
-        this.burnTimer.SetProgressSlider(this.UIController.getBurnSlider());
+        this.burnTimer.SetProgressSlider(this.UIController.getFuelSlider());
         this.burnTimer.setProgress(remainingBurnTicks);
     }
 
@@ -49,19 +50,23 @@ public class FuelComponent : IMachineComponent {
         }
     }
 
-    public void tick() {
+    public void Tick() {
         if (HasActiveFuel()) {
             remainingBurnTicks -= 1;
         }
     }
 
-    public void update() {
+    public void OnUpdate() {
         if (UIController != null) {
             this.burnTimer.setProgress(remainingBurnTicks);
         }
     }
 }
 
-interface IUsesFuelComponent {
-    FuelComponent getFuelAddition();
+public interface IUsesFuelComponent {
+    FuelComponent getFuelComponent();
+}
+
+interface IUsesFuelComponentUI {
+    Slider getFuelSlider();
 }

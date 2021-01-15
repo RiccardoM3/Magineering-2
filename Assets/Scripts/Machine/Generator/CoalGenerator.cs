@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FuelFurnace : Furnace, IUsesFuelComponent
-{
+public class CoalGenerator : ElectricityGenerator, IUsesFuelComponent {
+
     private FuelComponent fuelComponent;
 
     public override void Init() {
@@ -32,7 +32,6 @@ public class FuelFurnace : Furnace, IUsesFuelComponent
     }
 
     public override void ConnectMachineToUI() {
-        base.ConnectMachineToUI();
         this.fuelComponent.connectToUI(this.UIController);
     }
 
