@@ -21,8 +21,7 @@ public class CoalGenerator : ElectricityGenerator, IUsesFuelComponent {
         base.Tick();
         this.fuelComponent.Tick();
 
-        Recipe recipe = this.GetMatchingRecipe();
-        if (this.fuelComponent.ShouldConsumeFuel() && recipe != null && this.outputs.CanFitItems(recipe.producedItems)) {
+        if (this.fuelComponent.ShouldConsumeFuel()) {
             this.fuelComponent.ConsumeFuel();
         }
     }

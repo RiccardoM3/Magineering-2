@@ -20,7 +20,7 @@ public abstract class ElectricityGenerator : Machine, IUsesElectricityComponent 
         this.electricityComponent.Tick();
 
         if (this.CanProcess()) {
-            outputNode.GetComponent<WireNode>().powerContributionPerTick = generatedPowerPerTick;
+            outputNode.GetComponent<WireNode>().powerContributionPerTick = -1 * generatedPowerPerTick;
         }
         else {
             outputNode.GetComponent<WireNode>().powerContributionPerTick = 0;

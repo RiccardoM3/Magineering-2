@@ -17,5 +17,5 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: b073a2b4014c6ee47a30755fbbe8f68d, type: 2}
     amount: 4
   producedItems:
-  - item: {fileID: 11400000, guid: 7aa7743675dab984f90ef70a7ae29843, type: 2}
+  - item: {fileID: 11400000, guid: 8be5f77ca514e144eb264a11c7d7d417, type: 2}
     amount: 8

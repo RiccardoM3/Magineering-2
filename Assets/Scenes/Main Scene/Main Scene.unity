@@ -4846,6 +4846,11 @@ PrefabInstance:
       propertyPath: backgroundCover
       value: 
       objectReference: {fileID: 1299501437}
+    - target: {fileID: 1857740635, guid: b808dfcd39759994e941b6c9673dbbff, type: 3}
+      propertyPath: debugItems.Array.data[7].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 8be5f77ca514e144eb264a11c7d7d417,
+        type: 2}
     - target: {fileID: 298217432723043225, guid: b808dfcd39759994e941b6c9673dbbff,
         type: 3}
       propertyPath: m_LocalPosition.x
