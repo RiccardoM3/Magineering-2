@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ManualCrusher : ManualMachine, IInteractable {
 
-    public Crusher crusher = new Crusher();
+    
 
     // Start is called before the first frame update
     public override void Start()
@@ -26,7 +26,5 @@ public class ManualCrusher : ManualMachine, IInteractable {
 
     public void RightClickInteract() {
         ConnectToUI();
-        crusher.ConnectToUI();
-        crusher.ConnectToManualUI();
     }
 }

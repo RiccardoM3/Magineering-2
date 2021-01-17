@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 1127002921913627559}
   - component: {fileID: 1127002921913627558}
   m_Layer: 5
-  m_Name: CrushedItemSlotHolder
+  m_Name: OutputItemSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 1127002923050280545}
   - component: {fileID: 1127002923050280544}
   m_Layer: 5
-  m_Name: CrushingItemSlotHolder
+  m_Name: InputItemSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1067,7 +1067,6 @@ GameObject:
   - component: {fileID: 9011374699219303535}
   - component: {fileID: 9011374699219303532}
   - component: {fileID: 5763684539498878258}
-  - component: {fileID: 5011238585635379057}
   m_Layer: 5
   m_Name: CrusherInventory
   m_TagString: Untagged
@@ -1116,19 +1115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8334a804b0b6b4c95e8673758c8801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5011238585635379057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9011374699219303534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b86d464c3f77a04db55cbb9df57bac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressBar: {fileID: 6019388717798427518}
 --- !u!1001 &206408764133139414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,18 +1665,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 405226889183304332}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6019388717798427518 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6203301190632706546, guid: 129e9cb5e9ba5d8489fce74523e3cbe1,
-    type: 3}
-  m_PrefabInstance: {fileID: 405226889183304332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &438798393124688483
 PrefabInstance:
   m_ObjectHideFlags: 0

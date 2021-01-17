@@ -47,11 +47,9 @@ public class WireSystem
             float requiredPower = consumerNodes[0].powerContributionPerTick;
 
             if (requiredPower <= maxSupplyPower) {
-                //consumerNodes[0].receivedPower = requiredPower;
                 consumerNodes[0].SendPowerToMachine(requiredPower);
                 collectedPower -= requiredPower;
             } else {
-                //consumerNodes[0].receivedPower = maxSupplyPower;
                 consumerNodes[0].SendPowerToMachine(maxSupplyPower);
                 collectedPower -= maxSupplyPower;
             }

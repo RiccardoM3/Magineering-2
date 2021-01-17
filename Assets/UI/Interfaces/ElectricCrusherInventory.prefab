@@ -109,8 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639661823570191861}
   - component: {fileID: 639661823570191862}
-  - component: {fileID: 4375535197939204857}
-  - component: {fileID: 1271621519214199504}
+  - component: {fileID: 1922176321381165955}
   m_Layer: 5
   m_Name: ElectricCrusherInventory
   m_TagString: Untagged
@@ -147,7 +146,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639661823570191860}
   m_CullTransparentMesh: 0
---- !u!114 &4375535197939204857
+--- !u!114 &1922176321381165955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,26 +155,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 639661823570191860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b86d464c3f77a04db55cbb9df57bac1, type: 3}
+  m_Script: {fileID: 11500000, guid: de8334a804b0b6b4c95e8673758c8801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeImage: {fileID: 21300000, guid: bd9a4eb303e29b741805f97207dc0eb8, type: 3}
+  inactiveImage: {fileID: 21300000, guid: 3063124dafe170d44bcc33b728961ca6, type: 3}
+  statusImage: {fileID: 4375535198022418100}
   progressBar: {fileID: 8138976310204920072}
---- !u!114 &1271621519214199504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639661823570191860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5d335b8e676f74a9ac96cccfa6dd24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  electricityPrefab: {fileID: 21300000, guid: bd9a4eb303e29b741805f97207dc0eb8, type: 3}
-  emptyElectricityPrefab: {fileID: 21300000, guid: 3063124dafe170d44bcc33b728961ca6,
-    type: 3}
-  electricitySprite: {fileID: 4375535198022418100}
 --- !u!1 &905377588548084795
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +864,7 @@ GameObject:
   - component: {fileID: 8812902006194847739}
   - component: {fileID: 8812902006194847738}
   m_Layer: 5
-  m_Name: CrushingItemSlotHolder
+  m_Name: InputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -923,7 +909,7 @@ GameObject:
   - component: {fileID: 8812902007071451709}
   - component: {fileID: 8812902007071451708}
   m_Layer: 5
-  m_Name: CrushedItemSlotHolder
+  m_Name: OutputSlotHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
