@@ -51,6 +51,10 @@ public abstract class Machine : MonoBehaviour, IInteractable
 
     //returns whether you can process or not this tick
     public virtual bool CanProcess() {
+        return HasMatchingRecipeAndFitsInOutputContainer();
+    }
+
+    public bool HasMatchingRecipeAndFitsInOutputContainer() {
         Recipe recipe = this.GetMatchingRecipe();
         if (recipe == null || !this.outputs.CanFitItems(recipe.producedItems)) {
             return false;

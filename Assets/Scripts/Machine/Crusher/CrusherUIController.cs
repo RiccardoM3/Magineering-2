@@ -18,6 +18,6 @@ public class CrusherUIController : MachineUIController {
     }
 
     public void Crush() {
-        linkedCrusher.Tick();
+        (linkedCrusher as ManualCrusher).Crush();
     }
 }

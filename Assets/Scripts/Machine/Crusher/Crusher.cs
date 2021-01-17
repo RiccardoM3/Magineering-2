@@ -26,8 +26,7 @@ public abstract class Crusher : Machine {
 
         if (this.CanProcess()) {
             this.progress.addProgress(1 * this.speed);
-        }
-        else {
+        } else {
             this.progress.setProgress(0);
         }
 
@@ -37,6 +36,7 @@ public abstract class Crusher : Machine {
         }
     }
 
+    //TODO
     public void UpdateItems() {
         crushingItem = this.inputs.items[0].item;
         if (crushingItem == null || currentCrushingItem != crushingItem) {
