@@ -18,9 +18,9 @@ public abstract class ElectricityGenerator : Machine, IUsesElectricityComponent 
     public override void Tick() {
         base.Tick();
         this.electricityComponent.Tick();
-
+        
         if (this.CanProcess()) {
-            outputNode.GetComponent<WireNode>().powerContributionPerTick = -1 * generatedPowerPerTick;
+            outputNode.GetComponent<WireNode>().powerContributionPerTick = generatedPowerPerTick;
         }
         else {
             outputNode.GetComponent<WireNode>().powerContributionPerTick = 0;

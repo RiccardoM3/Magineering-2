@@ -32,6 +32,7 @@ public class FuelComponent : IMachineComponent {
         currentFuelItem = fuelItem;
         remainingBurnTicks += currentFuelItem.burnTicks;
         fuelContainer.SubtractItem(fuelItem, 1);
+        UpdateFuelItems();
     }
 
     public bool HasActiveFuel() {

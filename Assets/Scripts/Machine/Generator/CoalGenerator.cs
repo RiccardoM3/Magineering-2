@@ -27,7 +27,7 @@ public class CoalGenerator : ElectricityGenerator, IUsesFuelComponent {
     }
 
     public override bool CanProcess() {
-        return this.fuelComponent.HasActiveFuel() && base.CanProcess();
+        return this.fuelComponent.HasActiveFuel();
     }
 
     public override void ConnectMachineToUI() {
