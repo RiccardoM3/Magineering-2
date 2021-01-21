@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33c80e9f2f4647544babb0326710d1a3, type: 3}
-  m_Name: Electric Wire
+  m_Name: ElectricCable
   m_EditorClassIdentifier: 
-  itemName: Electric Wire
+  itemName: Electric cable
   stackAmount: 50
   icon: {fileID: 21300000, guid: 4b2d12918e0087d45a92a6aa201c9aaa, type: 3}
   insertsInto: 00000000

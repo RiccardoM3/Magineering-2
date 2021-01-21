@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ad5e5695c4a114f858ecaccbffd522, type: 3}
-  m_Name: ElectricWireCraftingRecipe
+  m_Name: ElectricCableCraftingRecipe
   m_EditorClassIdentifier: 
   machineType: 0
   requiredItems:

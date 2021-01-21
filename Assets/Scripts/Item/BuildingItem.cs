@@ -10,12 +10,12 @@ public class BuildingItem : Item
     public override void Hover()
     {
         base.Hover();
-        BuildingManger.instance.StartBuilding(preview);
+        BuildingManager.instance.StartBuilding(preview);
     }
 
     public override void Unhover()
     {
         base.Unhover();
-        BuildingManger.instance.StopBuilding();
+        BuildingManager.instance.StopBuilding();
     }
 }

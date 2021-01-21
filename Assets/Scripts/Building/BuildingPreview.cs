@@ -104,10 +104,10 @@ public class BuildingPreview : MonoBehaviour
            activeSnapPoint.SetActive(false);
         }
 
-        BuildingManger.instance.StopBuilding();
+        BuildingManager.instance.StopBuilding();
         if (InventoryController.instance.activeSlot.item != null) {
             BuildingItem item = InventoryController.instance.activeSlot.item as BuildingItem;
-            BuildingManger.instance.StartBuilding(item.preview);
+            BuildingManager.instance.StartBuilding(item.preview);
         }
     }
 

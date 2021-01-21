@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingManger : MonoBehaviour
+public class BuildingManager : MonoBehaviour
 {
     #region Singleton
-    public static BuildingManger instance;
+    public static BuildingManager instance;
 
     void Awake() {
         if (instance != null) {
